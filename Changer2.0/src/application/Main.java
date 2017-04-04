@@ -17,7 +17,7 @@ public class Main extends Application {
 		Scene scene = new Scene(root,primaryStage.getWidth(), primaryStage.getHeight());
 		
 		
-		//attempt to launch
+		//attempt to launch 1.1
 		
 		primaryStage.setScene(scene);
 		primaryStage.setTitle("First Window");
