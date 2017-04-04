@@ -7,9 +7,26 @@ import javafx.stage.Stage;
 
 public class Controller {
 
+	public Controller() {
+		System.out.println("constr");
+		
+		
+		
+		// TODO Auto-generated constructor stub
+	}
+
 	@FXML
 	public void nextButtonClicked() {
 		System.out.println("NEXT");
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 	}
 
