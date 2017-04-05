@@ -13,14 +13,14 @@ import javafx.stage.Stage;
 public class Controller {
 
 	private String pathForXml = "D:/list.xml";
-	ObservableList<String> listOfEnvForChoiceBox;
+	ObservableList<String> listOfEnvForChoiceBox  = FXCollections.observableArrayList(forEnvParser());
 	
 	
 	
 	public Controller() {
-		System.out.println("constr");
+		
 		System.out.println(forEnvParser());
-	 listOfEnvForChoiceBox = FXCollections.observableArrayList(forEnvParser());
+	
 		
 		// TODO Auto-generated constructor stub
 	}
