@@ -16,7 +16,7 @@
 
 <AnchorPane focusTraversable="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="211.0" prefWidth="415.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller">
    <children>
-      <ChoiceBox layoutX="25.0" layoutY="90.0" prefHeight="37.0" prefWidth="258.0" />
+      <ChoiceBox fx:id="listForChoiceBox" layoutX="25.0" layoutY="90.0" prefHeight="37.0" prefWidth="258.0" />
       <Text layoutX="98.0" layoutY="71.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Choise your environment" wrappingWidth="142.13671875" />
       <Button layoutX="304.0" layoutY="90.0" mnemonicParsing="false" onAction="#nextButtonClicked" onMouseClicked="#onMouseClickedCancelBtn" prefHeight="37.0" prefWidth="83.0" text="Next &gt;" />
       <MenuBar layoutY="2.0" prefHeight="25.0" prefWidth="415.0">
