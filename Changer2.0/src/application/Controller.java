@@ -70,7 +70,7 @@ public class Controller {
 	
 	public String[] forEnvParser(){
 		
-		ParseForEnv listOfEnv = new ParseForEnv(pathForXml);
+		Parser listOfEnv = new Parser(pathForXml);
 		
 		
 		

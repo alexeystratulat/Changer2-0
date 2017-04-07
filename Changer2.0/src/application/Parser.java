@@ -12,17 +12,13 @@ import org.w3c.dom.Node;
 import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
-public class ParseForEnv {
-private static String pathForXml;
-private static int lengthMass = 20;
-	
-	
-	public ParseForEnv(String pathForXml) {
+public class Parser {
+	private static String pathForXml;
+	private static int lengthMass = 20;
+
+	public Parser(String pathForXml) {
 		this.pathForXml = pathForXml;
-		
-		
-		
-		// TODO Auto-generated constructor stub
+
 	}
 
 	public static String[] parserForEnv() {
@@ -93,45 +89,81 @@ private static int lengthMass = 20;
 		return massToBeSent;
 
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
+	public static String[] parserForIP() {
+
+		String[] mass = new String[lengthMass];
+		String[] massToBeSent = null;
+		int counter = 0;
+		int envToShow = 1; // It should be a variable to receive from another
+							// class
+
+		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+
+		try {
+			DocumentBuilder builder = factory.newDocumentBuilder();
+			Document doc = builder.parse(pathForXml);
+			NodeList envList = doc.getElementsByTagName("env");
+
+			Node p = envList.item(envToShow);
+			if (p.getNodeType() == Node.ELEMENT_NODE) {
+
+				Element env = (Element) p;
+				String id = env.getAttribute("id");
+				NodeList nameList = env.getChildNodes();
+				for (int j = 0; j < nameList.getLength(); j++) {
+
+					String compare;
+					Node n = nameList.item(j);
+					if (n.getNodeType() == Node.ELEMENT_NODE) {
+						Element name = (Element) n;
+
+						compare = name.getTagName();
+						if (compare.equals("ip")) {
+							mass[counter] = name.getTextContent();
+
+							System.out.print("env " + id + ": " + name.getTagName() + " = " + name.getTextContent());
+							System.out.println("            " + counter);
+							counter++;
+						}
+					}
+
+				}
+
+			}
+
+			massToBeSent = new String[counter];
+			for (int i = 0; i < counter; i++) {
+				massToBeSent[i] = mass[i];
+
+			}
+
+			// return massToBeSent;
+
+		} catch (ParserConfigurationException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (SAXException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return massToBeSent;
+
+	}
+
+	public void parserForSetting() {
+
+	}
+
+	public void creatingPathForSetting() {
+
+	}
+
+	public void creatingPathSourseFile() {
+
+	}
+
 }
