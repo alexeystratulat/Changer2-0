@@ -19,6 +19,7 @@ import javafx.scene.layout.Pane;
 
 public class Main extends Application {
 	
+	
 	private static String logPath =  "D:/MyLogFile.log";
 	private static String logName =  "MyLog";
 
@@ -45,9 +46,11 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) throws SecurityException, IOException {
-		logging();
+		//logging();
 		logger.info("App is started");
-
+		Parser pars = new Parser();
+		pars.creatingWorkingMainPath();
+		pars.creatingPathForSettings();
 		launch(args);
 
 	}

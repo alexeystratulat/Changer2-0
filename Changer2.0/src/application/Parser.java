@@ -2,6 +2,7 @@ package application;
 
 import java.io.File;
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
@@ -16,6 +17,9 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class Parser {
+	private String mainFolder = "C:\\Starter";
+	private String settingsFileLocation = mainFolder + "\\settings.ini";
+
 	static Logger logger = Logger.getLogger("MyLog");
 	private static String pathForXml;
 	private static int lengthMass = 20;
@@ -25,8 +29,12 @@ public class Parser {
 
 	}
 
+	public Parser() {
+
+	}
+
 	public static String[] parserForEnv() {
-		
+
 		logger.info("Parser for ENV is started");
 
 		String[] mass = new String[lengthMass];
@@ -73,8 +81,6 @@ public class Parser {
 				massToBeSent[i] = mass[i];
 
 			}
-
-			
 
 		} catch (ParserConfigurationException e) {
 			logger.warning("ParserConfigurationException");
@@ -161,8 +167,29 @@ public class Parser {
 
 	}
 
-	public void creatingPathForSettings() {
+	public void creatingPathForSettings() throws IOException {
 		logger.info("Creating path for settings is started");
+
+		File settingsFile = new File(settingsFileLocation);
+
+		if (!settingsFile.exists()) {
+
+			settingsFile.createNewFile();
+			PrintWriter writer = new PrintWriter(settingsFileLocation, "UTF-8");
+			writer.println("[first]");
+			writer.println("logPath = D:/MyLogFile.log");
+			writer.println("logName = MyLog");
+			writer.println("[Second]");
+			writer.println("second = 2");
+			writer.close();
+
+			logger.info(settingsFileLocation + " created");
+
+		} else {
+
+			logger.info(settingsFileLocation + " is exist");
+
+		}
 
 	}
 
@@ -173,16 +200,16 @@ public class Parser {
 	public void creatingWorkingMainPath() {
 		logger.info("Creating main path is started");
 
-		File theDir = new File("C:\\Starter");
+		File starterDirectory = new File(mainFolder);
 
-		if (!theDir.exists()) {
-			logger.info("creating directory");
-			
+		if (!starterDirectory.exists()) {
 
-			theDir.mkdir();
-			logger.info("DIR created");
+			starterDirectory.mkdir();
+			logger.info("DIR " + mainFolder + " created");
 
-			
+		} else {
+
+			logger.info(mainFolder + " is exist");
 
 		}
 
