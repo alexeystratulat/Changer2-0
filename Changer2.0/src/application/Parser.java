@@ -1,6 +1,9 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
+import java.util.Arrays;
+import java.util.logging.Logger;
 
 import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
@@ -13,6 +16,7 @@ import org.w3c.dom.NodeList;
 import org.xml.sax.SAXException;
 
 public class Parser {
+	static Logger logger = Logger.getLogger("MyLog");
 	private static String pathForXml;
 	private static int lengthMass = 20;
 
@@ -22,6 +26,8 @@ public class Parser {
 	}
 
 	public static String[] parserForEnv() {
+		
+		logger.info("Parser for ENV is started");
 
 		String[] mass = new String[lengthMass];
 		String[] massToBeSent = null;
@@ -52,9 +58,6 @@ public class Parser {
 							if (compare.equals("name")) {
 								mass[counter] = name.getTextContent();
 
-								System.out
-										.print("env " + id + ": " + name.getTagName() + " = " + name.getTextContent());
-								System.out.println("            " + counter);
 								counter++;
 							}
 						}
@@ -71,27 +74,26 @@ public class Parser {
 
 			}
 
-			return massToBeSent;
+			
 
 		} catch (ParserConfigurationException e) {
-			System.out.println("111111111111111111111");
-			// TODO Auto-generated catch block
+			logger.warning("ParserConfigurationException");
 			e.printStackTrace();
 		} catch (SAXException e) {
-			// TODO Auto-generated catch block
-			System.out.println("22222222222");
+			logger.warning("SAXException");
 			e.printStackTrace();
 		} catch (IOException e) {
-			System.out.println("333333333333");
-			// TODO Auto-generated catch block
+			logger.warning("IOException");
 			e.printStackTrace();
 		}
+
+		logger.info("Array with Environment: " + Arrays.toString(massToBeSent) + " is sent");
 		return massToBeSent;
 
 	}
 
 	public static String[] parserForIP() {
-
+		logger.info("Parser for IP is started");
 		String[] mass = new String[lengthMass];
 		String[] massToBeSent = null;
 		int counter = 0;
@@ -155,14 +157,34 @@ public class Parser {
 	}
 
 	public void parserForSetting() {
+		logger.info("Parser setting is started");
 
 	}
 
-	public void creatingPathForSetting() {
+	public void creatingPathForSettings() {
+		logger.info("Creating path for settings is started");
 
 	}
 
 	public void creatingPathSourseFile() {
+		logger.info("Creating sourse path is started");
+	}
+
+	public void creatingWorkingMainPath() {
+		logger.info("Creating main path is started");
+
+		File theDir = new File("C:\\Starter");
+
+		if (!theDir.exists()) {
+			logger.info("creating directory");
+			
+
+			theDir.mkdir();
+			logger.info("DIR created");
+
+			
+
+		}
 
 	}
 

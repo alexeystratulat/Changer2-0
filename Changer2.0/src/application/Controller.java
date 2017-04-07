@@ -1,6 +1,13 @@
 package application;
 
+import java.io.IOException;
+import java.util.Arrays;
 import java.util.Observable;
+import java.util.logging.FileHandler;
+import java.util.logging.Logger;
+import java.util.logging.SimpleFormatter;
+
+import com.sun.xml.internal.bind.v2.runtime.unmarshaller.XsiNilLoader.Array;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -9,8 +16,15 @@ import javafx.scene.Node;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.InputEvent;
 import javafx.stage.Stage;
+import sun.util.logging.resources.logging;
 
 public class Controller {
+	static Logger logger = Logger.getLogger("MyLog");
+	
+	
+	
+	
+	
 
 	private String pathForXml = "D:/list.xml";
 	ObservableList<String> listOfEnvForChoiceBox  = FXCollections.observableArrayList(forEnvParser());
@@ -19,15 +33,15 @@ public class Controller {
 	
 	public Controller() {
 		
-		System.out.println(forEnvParser());
-	
+		
+		
 		
 		// TODO Auto-generated constructor stub
 	}
 
 	@FXML
 	public void nextButtonClicked() {
-		System.out.println("NEXT");
+		logger.info("NEXT> button is typed");
 		
 		
 		
@@ -60,8 +74,8 @@ public class Controller {
 	@FXML
 	private void initialize(){
 		listForChoiceBox.setItems(listOfEnvForChoiceBox);
-		//listOfEnvForChoiceBox.setValue("value");
-		
+
+
 		
 		
 		
