@@ -1,34 +1,36 @@
 package application;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.logging.FileHandler;
 import java.util.logging.Logger;
 import java.util.logging.SimpleFormatter;
 
+import org.ini4j.Ini;
+
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.stage.Stage;
 import javafx.scene.Scene;
-import javafx.scene.layout.BorderPane;
 import javafx.scene.layout.Pane;
-
-
 
 //
 
-
 public class Main extends Application {
-	
-	
-	private static String logPath =  "D:/MyLogFile.log";
-	private static String logName =  "MyLog";
 
-	static Logger logger = Logger.getLogger("logName");
+	public static Ini getSettings() {
+		return settings;
+	}
+
+	static Parser pars;
+	static Ini settings;
+
+	static Logger logger;
 	static FileHandler fh;
 
 	public static void logging() throws SecurityException, IOException {
 
-		fh = new FileHandler(logPath);
+		fh = new FileHandler(settings.get("settings", "logPath"));
 		logger.addHandler(fh);
 		SimpleFormatter formatter = new SimpleFormatter();
 		fh.setFormatter(formatter);
@@ -46,11 +48,19 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) throws SecurityException, IOException {
-		//logging();
-		logger.info("App is started");
-		Parser pars = new Parser();
+		pars = new Parser();
 		pars.creatingWorkingMainPath();
-		pars.creatingPathForSettings();
+		System.out.println(pars.creatingPathForSettings());
+		settings = new Ini(new File(pars.creatingPathForSettings()));
+		logger = Logger.getLogger(settings.get("settings", "logName"));
+		logging();
+		//
+
+		//
+		settings.get("setting", "xmlForEnv");
+		System.out.println("dsfdsfdsfdsfdsfdsfdsfdsfdsfds");
+		logger.info("App is started");
+
 		launch(args);
 
 	}

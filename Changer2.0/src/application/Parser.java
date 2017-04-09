@@ -164,10 +164,21 @@ public class Parser {
 
 	public void parserForSetting() {
 		logger.info("Parser setting is started");
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
 
 	}
 
-	public void creatingPathForSettings() throws IOException {
+	public String creatingPathForSettings() throws IOException {
 		logger.info("Creating path for settings is started");
 
 		File settingsFile = new File(settingsFileLocation);
@@ -176,20 +187,28 @@ public class Parser {
 
 			settingsFile.createNewFile();
 			PrintWriter writer = new PrintWriter(settingsFileLocation, "UTF-8");
-			writer.println("[first]");
+			writer.println("[settings]");
 			writer.println("logPath = D:/MyLogFile.log");
 			writer.println("logName = MyLog");
+			writer.println("xmlForEnv = D:/list.xml");
 			writer.println("[Second]");
 			writer.println("second = 2");
 			writer.close();
 
 			logger.info(settingsFileLocation + " created");
+			
 
 		} else {
+			
+			
+			
+			
+			
 
 			logger.info(settingsFileLocation + " is exist");
 
 		}
+		return settingsFileLocation;
 
 	}
 
