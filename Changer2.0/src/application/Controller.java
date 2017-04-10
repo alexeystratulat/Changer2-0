@@ -23,40 +23,51 @@ import javafx.stage.Stage;
 public class Controller {
 	static Logger logger = Logger.getLogger(Main.settings.get("settings", "logName"));
 
-		private String pathForIni = Main.settings.get("settings", "iniForEnv");
+	private String pathForIni = Main.settings.get("settings", "iniForEnv");
 
-	
 	ObservableList<String> listOfEnvForChoiceBox = FXCollections.observableArrayList(forEnvParserIni());
 
-	public Controller() {
+	private String choisenEnvName = "default";
+	
+	
+	
+	
+	
+	public String getChoisenEnvName() {
+		
+		return choisenEnvName;
+	}
 
+	public Controller() {
+		
 		// TODO Auto-generated constructor stub
 	}
 
 	@FXML
 	public void nextButtonClicked() {
-		logger.info("NEXT> button is typed");
+		
+		choisenEnvName = listForChoiceBox.getValue();
+		//System.out.println(listForChoiceBox.getValue());
+		logger.info("NEXT> button is typed    "+ choisenEnvName);
+		
+		
 		
 		
 		Parent root;
-        try {
-        	
-        	FXMLLoader fxmlLoader = new FXMLLoader();
-	        fxmlLoader.setLocation(getClass().getResource("frame1.fxml"));
-	        Scene scene = new Scene(fxmlLoader.load());
-	        Stage stage = new Stage();
-	        stage.setTitle("New Window2");
-	        stage.setScene(scene);
-	        stage.show();
-            // Hide this current window (if this is what you want)
-    
-        }
-        catch (IOException e) {
-            e.printStackTrace();
-        }
-		
-		
-		
+		try {
+
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(getClass().getResource("frame1.fxml"));
+			Scene scene = new Scene(fxmlLoader.load());
+			Stage stage = new Stage();
+			stage.setTitle("New Window2");
+			stage.setScene(scene);
+			stage.show();
+			// Hide this current window (if this is what you want)
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 
 	}
 
@@ -70,6 +81,8 @@ public class Controller {
 
 	@FXML
 	private ChoiceBox<String> listForChoiceBox;
+	
+	
 
 	@FXML
 	private void initialize() {
@@ -77,8 +90,6 @@ public class Controller {
 
 	}
 
-	
-	
 	public String[] forEnvParserIni() {
 
 		Parser listOfEnv = new Parser(pathForIni);

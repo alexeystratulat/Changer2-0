@@ -146,7 +146,7 @@ public class Parser {
 			writer.println("[settings]");
 			writer.println("logPath = D:/MyLogFile.log");
 			writer.println("logName = MyLog");
-			writer.println("xmlForEnv = D:/list.xml");
+			writer.println("iniForEnv = D:/list.ini");
 			writer.println("[Second]");
 			writer.println("second = 2");
 			writer.close();

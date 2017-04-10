@@ -58,7 +58,7 @@ public class Main extends Application {
 		//
 
 		//
-		settings.get("setting", "xmlForEnv");
+		
 		System.out.println("dsfdsfdsfdsfdsfdsfdsfdsfdsfds");
 		logger.info("App is started");
 
