@@ -20,9 +20,10 @@ import javafx.stage.Stage;
 public class Controller {
 	static Logger logger = Logger.getLogger(Main.settings.get("settings", "logName"));
 
-	private String pathForXml = Main.settings.get("settings", "xmlForEnv");
+		private String pathForIni = Main.settings.get("settings", "iniForEnv");
 
-	ObservableList<String> listOfEnvForChoiceBox = FXCollections.observableArrayList(forEnvParser());
+	
+	ObservableList<String> listOfEnvForChoiceBox = FXCollections.observableArrayList(forEnvParserIni());
 
 	public Controller() {
 
@@ -52,11 +53,13 @@ public class Controller {
 
 	}
 
-	public String[] forEnvParser() {
+	
+	
+	public String[] forEnvParserIni() {
 
-		Parser listOfEnv = new Parser(pathForXml);
+		Parser listOfEnv = new Parser(pathForIni);
 
-		return listOfEnv.parserForEnv();
+		return listOfEnv.parserForEnvIni();
 
 	}
 

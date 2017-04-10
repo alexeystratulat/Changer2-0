@@ -10,6 +10,8 @@ import javax.xml.parsers.DocumentBuilder;
 import javax.xml.parsers.DocumentBuilderFactory;
 import javax.xml.parsers.ParserConfigurationException;
 
+import org.ini4j.Ini;
+import org.ini4j.InvalidFileFormatException;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -33,68 +35,33 @@ public class Parser {
 
 	}
 
-	public static String[] parserForEnv() {
+	public static String[] parserForEnvIni() {
 
-		logger.info("Parser for ENV is started");
-
-		String[] mass = new String[lengthMass];
-		String[] massToBeSent = null;
-		int counter = 0;
-
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
+		logger.info("Parser for ENV INI is started");
 
 		try {
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document doc = builder.parse(pathForXml);
-			NodeList envList = doc.getElementsByTagName("env");
+			Ini list = new Ini(new File(pathForXml));
 
-			for (int i = 0; i < envList.getLength(); i++) {
-				Node p = envList.item(i);
-				if (p.getNodeType() == Node.ELEMENT_NODE) {
+			String[] massToBeSent = new String[list.keySet().size()];
 
-					Element env = (Element) p;
-					String id = env.getAttribute("id");
-					NodeList nameList = env.getChildNodes();
-					for (int j = 0; j < nameList.getLength(); j++) {
+			int counter = 0;
+			for (String sectionName : list.keySet()) {
 
-						String compare;
-						Node n = nameList.item(j);
-						if (n.getNodeType() == Node.ELEMENT_NODE) {
-							Element name = (Element) n;
-
-							compare = name.getTagName();
-							if (compare.equals("name")) {
-								mass[counter] = name.getTextContent();
-
-								counter++;
-							}
-						}
-
-					}
-
-				}
+				massToBeSent[counter] = sectionName.toString();
+				counter++;
 
 			}
 
-			massToBeSent = new String[counter];
-			for (int i = 0; i < counter; i++) {
-				massToBeSent[i] = mass[i];
+			return massToBeSent;
 
-			}
-
-		} catch (ParserConfigurationException e) {
-			logger.warning("ParserConfigurationException");
-			e.printStackTrace();
-		} catch (SAXException e) {
-			logger.warning("SAXException");
+		} catch (InvalidFileFormatException e) {
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
-			logger.warning("IOException");
+			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-
-		logger.info("Array with Environment: " + Arrays.toString(massToBeSent) + " is sent");
-		return massToBeSent;
+		return null;
 
 	}
 
@@ -164,17 +131,6 @@ public class Parser {
 
 	public void parserForSetting() {
 		logger.info("Parser setting is started");
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
 
 	}
 
@@ -196,14 +152,8 @@ public class Parser {
 			writer.close();
 
 			logger.info(settingsFileLocation + " created");
-			
 
 		} else {
-			
-			
-			
-			
-			
 
 			logger.info(settingsFileLocation + " is exist");
 

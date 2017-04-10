@@ -50,9 +50,10 @@ public class Main extends Application {
 	public static void main(String[] args) throws SecurityException, IOException {
 		pars = new Parser();
 		pars.creatingWorkingMainPath();
-		System.out.println(pars.creatingPathForSettings());
+	//	System.out.println(settings.getAll)
 		settings = new Ini(new File(pars.creatingPathForSettings()));
 		logger = Logger.getLogger(settings.get("settings", "logName"));
+		
 		logging();
 		//
 
