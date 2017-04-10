@@ -22,18 +22,17 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Controller {
+	
+	
 	static Logger logger = Logger.getLogger(Main.settings.get("settings", "logName"));
 
 	private String pathForIni = Main.settings.get("settings", "iniForEnv");
 
 	ObservableList<String> listOfEnvForChoiceBox = FXCollections.observableArrayList(forEnvParserIni());
 
-	private String choisenEnvName = "default";
+	
 
-	public String getChoisenEnvName() {
-
-		return choisenEnvName;
-	}
+	
 
 	public Controller() {
 
@@ -43,9 +42,8 @@ public class Controller {
 	@FXML
 	public void nextButtonClicked() {
 
-		choisenEnvName = listForChoiceBox.getValue();
-		// System.out.println(listForChoiceBox.getValue());
-		logger.info("NEXT> button is typed    " + choisenEnvName);
+		
+		logger.info("NEXT> button is typed    " + listForChoiceBox.getValue());
 
 		//Parent root;
 		try {
@@ -58,13 +56,9 @@ public class Controller {
 			d1.setNameOfEnv(listForChoiceBox.getValue());
 			Parent p = fxmlLoader.getRoot();
 			Stage stage = new Stage();
-			stage.setScene(new Scene (p));
-			//Scene scene = new Scene(fxmlLoader.load());
-			//stage.setTitle("New Window2");
-			 
-			//stage.setScene(scene);
+			stage.setScene(new Scene (p));			
 			stage.show();
-			// Hide this current window (if this is what you want)
+			
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -86,7 +80,7 @@ public class Controller {
 	@FXML
 	private void initialize() {
 		listForChoiceBox.setItems(listOfEnvForChoiceBox);
-
+		
 	}
 
 	public String[] forEnvParserIni() {
@@ -97,9 +91,5 @@ public class Controller {
 
 	}
 
-	public String choise() {
-
-		return listForChoiceBox.getValue();
-	}
-
+	
 }
