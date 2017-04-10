@@ -56,7 +56,8 @@ public class Controller {
 			d1.setNameOfEnv(listForChoiceBox.getValue());
 			Parent p = fxmlLoader.getRoot();
 			Stage stage = new Stage();
-			stage.setScene(new Scene (p));			
+			stage.setScene(new Scene (p));	
+			stage.setResizable(false);
 			stage.show();
 			
 
