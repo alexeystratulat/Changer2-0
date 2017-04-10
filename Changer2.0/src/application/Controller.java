@@ -12,7 +12,10 @@ import org.ini4j.Ini;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
+import javafx.scene.Parent;
+import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.InputEvent;
 import javafx.stage.Stage;
@@ -33,6 +36,27 @@ public class Controller {
 	@FXML
 	public void nextButtonClicked() {
 		logger.info("NEXT> button is typed");
+		
+		
+		Parent root;
+        try {
+        	
+        	FXMLLoader fxmlLoader = new FXMLLoader();
+	        fxmlLoader.setLocation(getClass().getResource("frame1.fxml"));
+	        Scene scene = new Scene(fxmlLoader.load());
+	        Stage stage = new Stage();
+	        stage.setTitle("New Window2");
+	        stage.setScene(scene);
+	        stage.show();
+            // Hide this current window (if this is what you want)
+    
+        }
+        catch (IOException e) {
+            e.printStackTrace();
+        }
+		
+		
+		
 
 	}
 
