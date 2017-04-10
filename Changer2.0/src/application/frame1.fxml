@@ -5,10 +5,9 @@
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 
-
 <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller1">
    <children>
       <Text layoutX="257.0" layoutY="93.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Texazazazazazat" />
-      <Button layoutX="274.0" layoutY="200.0" mnemonicParsing="false" onAction="#initialize" text="Button" />
+      <Button layoutX="274.0" layoutY="200.0" mnemonicParsing="false" onMouseClicked="#onClick" text="Button" />
    </children>
 </AnchorPane>

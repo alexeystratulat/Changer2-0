@@ -20,6 +20,11 @@ public class Controller1 {
 
 
 
+	public void setNameOfEnv(String nameOfEnv) {
+		this.nameOfEnv = nameOfEnv;
+	}
+
+
 	public Controller1() {
 		// TODO Auto-generated constructor stub
 
@@ -33,8 +38,8 @@ public class Controller1 {
 	
 	
 	@FXML
-	private void initialize() {
-		
+	private void onClick() {
+		System.out.println(nameOfEnv);
 		
 	
 		

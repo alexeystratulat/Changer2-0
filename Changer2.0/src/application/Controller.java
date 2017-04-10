@@ -18,6 +18,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.ChoiceBox;
 import javafx.scene.input.InputEvent;
+import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Controller {
@@ -28,40 +29,40 @@ public class Controller {
 	ObservableList<String> listOfEnvForChoiceBox = FXCollections.observableArrayList(forEnvParserIni());
 
 	private String choisenEnvName = "default";
-	
-	
-	
-	
-	
+
 	public String getChoisenEnvName() {
-		
+
 		return choisenEnvName;
 	}
 
 	public Controller() {
-		
+
 		// TODO Auto-generated constructor stub
 	}
 
 	@FXML
 	public void nextButtonClicked() {
-		
-		choisenEnvName = listForChoiceBox.getValue();
-		//System.out.println(listForChoiceBox.getValue());
-		logger.info("NEXT> button is typed    "+ choisenEnvName);
-		
-		
-		
-		
-		Parent root;
-		try {
 
+		choisenEnvName = listForChoiceBox.getValue();
+		// System.out.println(listForChoiceBox.getValue());
+		logger.info("NEXT> button is typed    " + choisenEnvName);
+
+		//Parent root;
+		try {
+			
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(getClass().getResource("frame1.fxml"));
-			Scene scene = new Scene(fxmlLoader.load());
+			fxmlLoader.load();
+			
+			Controller1 d1 = fxmlLoader.getController();
+			d1.setNameOfEnv(listForChoiceBox.getValue());
+			Parent p = fxmlLoader.getRoot();
 			Stage stage = new Stage();
-			stage.setTitle("New Window2");
-			stage.setScene(scene);
+			stage.setScene(new Scene (p));
+			//Scene scene = new Scene(fxmlLoader.load());
+			//stage.setTitle("New Window2");
+			 
+			//stage.setScene(scene);
 			stage.show();
 			// Hide this current window (if this is what you want)
 
@@ -81,8 +82,6 @@ public class Controller {
 
 	@FXML
 	private ChoiceBox<String> listForChoiceBox;
-	
-	
 
 	@FXML
 	private void initialize() {
@@ -96,6 +95,11 @@ public class Controller {
 
 		return listOfEnv.parserForEnvIni();
 
+	}
+
+	public String choise() {
+
+		return listForChoiceBox.getValue();
 	}
 
 }
