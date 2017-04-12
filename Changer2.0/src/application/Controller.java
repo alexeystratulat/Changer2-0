@@ -86,7 +86,7 @@ public class Controller {
 
 	public String[] forEnvParserIni() {
 
-		Parser listOfEnv = new Parser(pathForIni);
+		Parser listOfEnv = new Parser();
 
 		return listOfEnv.parserForEnvIni();
 

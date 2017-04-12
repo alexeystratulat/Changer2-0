@@ -12,6 +12,7 @@ import javax.xml.parsers.ParserConfigurationException;
 
 import org.ini4j.Ini;
 import org.ini4j.InvalidFileFormatException;
+import org.ini4j.Profile.Section;
 import org.w3c.dom.Document;
 import org.w3c.dom.Element;
 import org.w3c.dom.Node;
@@ -23,11 +24,10 @@ public class Parser {
 	private String settingsFileLocation = mainFolder + "\\settings.ini";
 
 	static Logger logger = Logger.getLogger("MyLog");
-	private static String pathForXml;
-	private static int lengthMass = 20;
+	private static String serversIp;
 
-	public Parser(String pathForXml) {
-		this.pathForXml = pathForXml;
+	public Parser(String serversIp) {
+		this.serversIp = serversIp;
 
 	}
 
@@ -40,7 +40,7 @@ public class Parser {
 		logger.info("Parser for ENV INI is started");
 
 		try {
-			Ini list = new Ini(new File(pathForXml));
+			Ini list = new Ini(new File(Main.settings.get("settings", "iniForEnv")));
 
 			String[] massToBeSent = new String[list.keySet().size()];
 
@@ -65,67 +65,35 @@ public class Parser {
 
 	}
 
-	public static String[] parserForIP() {
-		logger.info("Parser for IP is started");
-		String[] mass = new String[lengthMass];
-		String[] massToBeSent = null;
-		int counter = 0;
-		int envToShow = 1; // It should be a variable to receive from another
-							// class
-
-		DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
-
+	public static String[] parserIniForIP() {
+		Ini listOfIP;
 		try {
-			DocumentBuilder builder = factory.newDocumentBuilder();
-			Document doc = builder.parse(pathForXml);
-			NodeList envList = doc.getElementsByTagName("env");
+			logger.info(Main.settings.get("settings", "iniForEnv"));
+			listOfIP = new Ini(new File(Main.settings.get("settings", "iniForEnv")));
+			// creating of IP's array to be send
+			String[] massOfIp = new String[listOfIP.get(serversIp).size()];
+			int massCounter = 0;
+			Section section = listOfIP.get(serversIp);
 
-			Node p = envList.item(envToShow);
-			if (p.getNodeType() == Node.ELEMENT_NODE) {
+			for (String optionKey : section.keySet()) {
+				massOfIp[massCounter] = section.get(optionKey);
+				massCounter++;
 
-				Element env = (Element) p;
-				String id = env.getAttribute("id");
-				NodeList nameList = env.getChildNodes();
-				for (int j = 0; j < nameList.getLength(); j++) {
-
-					String compare;
-					Node n = nameList.item(j);
-					if (n.getNodeType() == Node.ELEMENT_NODE) {
-						Element name = (Element) n;
-
-						compare = name.getTagName();
-						if (compare.equals("ip")) {
-							mass[counter] = name.getTextContent();
-
-							System.out.print("env " + id + ": " + name.getTagName() + " = " + name.getTextContent());
-							System.out.println("            " + counter);
-							counter++;
-						}
-					}
-
-				}
-
+				// System.out.println("\t" + optionKey + "=" +
+				// section.get(optionKey));
 			}
 
-			massToBeSent = new String[counter];
-			for (int i = 0; i < counter; i++) {
-				massToBeSent[i] = mass[i];
+			return massOfIp;
 
-			}
-
-			// return massToBeSent;
-
-		} catch (ParserConfigurationException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} catch (SAXException e) {
+		} catch (InvalidFileFormatException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return massToBeSent;
+
+		return null;
 
 	}
 
