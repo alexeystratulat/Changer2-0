@@ -16,6 +16,8 @@ public class Controller1 {
 	
 	
 	
+	
+	
 
 
 
@@ -44,8 +46,8 @@ public class Controller1 {
 		
 		
 		
-		System.out.println(Arrays.toString(parseForIp.parserIniForIP()));
-		System.out.println(parseForIp.parserIniForIP()[2]);
+		System.out.println((parseForIp.parserIniForIP()));
+		//System.out.println(parseForIp.parserIniForIP()[2]);
 		
 	
 		

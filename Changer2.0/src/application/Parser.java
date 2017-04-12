@@ -3,6 +3,7 @@ package application;
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.logging.Logger;
 
@@ -65,25 +66,33 @@ public class Parser {
 
 	}
 
-	public static String[] parserIniForIP() {
+	public static ArrayList<Servers> parserIniForIP() {
+		ArrayList<Servers> list = new ArrayList<Servers>();
+		//
+
 		Ini listOfIP;
 		try {
 			logger.info(Main.settings.get("settings", "iniForEnv"));
 			listOfIP = new Ini(new File(Main.settings.get("settings", "iniForEnv")));
-			// creating of IP's array to be send
-			String[] massOfIp = new String[listOfIP.get(serversIp).size()];
-			int massCounter = 0;
+			// creating arrayList with name of servers, Ip ,etc
+			
 			Section section = listOfIP.get(serversIp);
 
 			for (String optionKey : section.keySet()) {
-				massOfIp[massCounter] = section.get(optionKey);
-				massCounter++;
 
-				// System.out.println("\t" + optionKey + "=" +
-				// section.get(optionKey));
+				
+				list.add(new Servers(section.get(optionKey), Main.settings.get("server", "user"),
+						Main.settings.get("server", "password")));
+
+				
 			}
+			
+			
+			
+			//System.out.println(list);
+			
 
-			return massOfIp;
+			return list;
 
 		} catch (InvalidFileFormatException e) {
 			// TODO Auto-generated catch block
