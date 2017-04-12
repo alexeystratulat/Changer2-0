@@ -74,7 +74,7 @@ public class Parser {
 		try {
 			logger.info(Main.settings.get("settings", "iniForEnv"));
 			listOfIP = new Ini(new File(Main.settings.get("settings", "iniForEnv")));
-			// creating arrayList with name of servers, Ip ,etc
+			// creating arrayList with name of servers, Ip 
 			
 			Section section = listOfIP.get(serversIp);
 

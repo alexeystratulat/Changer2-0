@@ -49,7 +49,10 @@ public class Controller {
 		try {
 			
 			FXMLLoader fxmlLoader = new FXMLLoader();
-			fxmlLoader.setLocation(getClass().getResource("frame1.fxml"));
+			if(true)
+			{fxmlLoader.setLocation(getClass().getResource("frame1.fxml"));}			
+			else
+			{fxmlLoader.setLocation(getClass().getResource("frameTest.fxml"));}
 			fxmlLoader.load();
 			
 			Controller1 d1 = fxmlLoader.getController();
@@ -64,7 +67,7 @@ public class Controller {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-//
+		//
 	}
 
 	@FXML
