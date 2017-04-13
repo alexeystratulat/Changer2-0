@@ -111,52 +111,10 @@ public class Parser {
 
 	}
 
-	public String creatingPathForSettings() throws IOException {
-		logger.info("Creating path for settings is started");
+	
 
-		File settingsFile = new File(settingsFileLocation);
+	
 
-		if (!settingsFile.exists()) {
-
-			settingsFile.createNewFile();
-			PrintWriter writer = new PrintWriter(settingsFileLocation, "UTF-8");
-			writer.println("[settings]");
-			writer.println("logPath = D:/MyLogFile.log");
-			writer.println("logName = MyLog");
-			writer.println("iniForEnv = D:/list.ini");			
-			writer.close();
-
-			logger.info(settingsFileLocation + " created");
-
-		} else {
-
-			logger.info(settingsFileLocation + " is exist");
-
-		}
-		return settingsFileLocation;
-
-	}
-
-	public void creatingPathSourseFile() {
-		logger.info("Creating sourse path is started");
-	}
-
-	public void creatingWorkingMainPath() {
-		logger.info("Creating main path is started");
-
-		File starterDirectory = new File(mainFolder);
-
-		if (!starterDirectory.exists()) {
-
-			starterDirectory.mkdir();
-			logger.info("DIR " + mainFolder + " created");
-
-		} else {
-
-			logger.info(mainFolder + " is exist");
-
-		}
-
-	}
+	
 
 }

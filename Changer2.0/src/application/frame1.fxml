@@ -11,7 +11,7 @@
          <font>
             <Font size="15.0" />
          </font></Text>
-      <Button layoutX="586.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#onClick" text="Button" />
+      <Button layoutX="512.0" layoutY="390.0" mnemonicParsing="false" onMouseClicked="#onClick" text="Button" />
       <Separator layoutX="14.0" layoutY="45.0" prefHeight="2.0" prefWidth="639.0" />
       <CheckBox fx:id="checkBoxAll" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" text="Check all" />
       <Pane layoutX="6.0" layoutY="48.0" prefHeight="81.0" prefWidth="658.0">
@@ -30,6 +30,6 @@
          </children>
       </Pane>
       <Separator layoutX="16.0" layoutY="128.0" prefHeight="3.0" prefWidth="639.0" />
-      <Button layoutX="592.0" layoutY="390.0" mnemonicParsing="false" text="Back" />
+      <Button layoutX="592.0" layoutY="390.0" mnemonicParsing="false" onAction="#onClickBackButton" onMouseClicked="#onMouseClickedCancelBtn" text="Back" />
    </children>
 </AnchorPane>

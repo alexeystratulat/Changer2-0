@@ -21,7 +21,7 @@ public class Main extends Application {
 	public static Ini getSettings() {
 		return settings;
 	}
-
+	static WorkWithFile forFile;
 	static Parser pars;
 	static Ini settings;
 
@@ -49,11 +49,17 @@ public class Main extends Application {
 	}
 
 	public static void main(String[] args) throws SecurityException, IOException {
-		pars = new Parser();
-		pars.creatingWorkingMainPath();
-	//	System.out.println(settings.getAll)
-		settings = new Ini(new File(pars.creatingPathForSettings()));
+		forFile = new WorkWithFile();
+		forFile.creatingWorkingMainPath();
+		settings = new Ini(new File(forFile.creatingPathForSettings()));
+		forFile.deletingOfFolders();
+		//pars = new Parser();
+		//pars.creatingWorkingMainPath();
+		//settings = new Ini(new File(pars.creatingPathForSettings()));
+		//
+		
 		logger = Logger.getLogger(settings.get("settings", "logName"));
+	//	System.out.println(settings.getAll)
 		
 		logging();
 		//

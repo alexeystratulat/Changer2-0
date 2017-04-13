@@ -23,7 +23,7 @@ import javafx.stage.Stage;
 
 public class Controller {
 	
-	
+	WorkWithFile forFile;
 	static Logger logger = Logger.getLogger(Main.settings.get("settings", "logName"));
 
 	private String pathForIni = Main.settings.get("settings", "iniForEnv");
@@ -35,7 +35,7 @@ public class Controller {
 	
 
 	public Controller() {
-
+		
 		// TODO Auto-generated constructor stub
 	}
 
@@ -84,6 +84,18 @@ public class Controller {
 	@FXML
 	private void initialize() {
 		listForChoiceBox.setItems(listOfEnvForChoiceBox);
+		
+		System.out.println("INININININI");
+		forFile = new WorkWithFile();
+		forFile.deletingOfFolders();
+		
+		
+		
+		
+		
+		
+		
+		
 		
 	}
 
