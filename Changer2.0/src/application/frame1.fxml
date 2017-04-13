@@ -13,19 +13,19 @@
          </font></Text>
       <Button layoutX="586.0" layoutY="10.0" mnemonicParsing="false" onMouseClicked="#onClick" text="Button" />
       <Separator layoutX="14.0" layoutY="45.0" prefHeight="2.0" prefWidth="639.0" />
-      <CheckBox layoutX="22.0" layoutY="14.0" mnemonicParsing="false" text="Check all" />
+      <CheckBox fx:id="checkBoxAll" layoutX="24.0" layoutY="14.0" mnemonicParsing="false" text="Check all" />
       <Pane layoutX="6.0" layoutY="48.0" prefHeight="81.0" prefWidth="658.0">
          <children>
-            <Label fx:id="label1" layoutX="48.0" layoutY="32.0" prefHeight="17.0" prefWidth="155.0" text="IP adress" />
-            <CheckBox layoutX="14.0" layoutY="21.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="21.0">
+            <Label fx:id="labelIpAdress0" layoutX="48.0" layoutY="32.0" prefHeight="17.0" prefWidth="155.0" text="IP adress" />
+            <CheckBox fx:id="checkBox0" layoutX="14.0" layoutY="21.0" mnemonicParsing="false" prefHeight="37.0" prefWidth="21.0">
                <font>
                   <Font size="19.0" />
                </font>
             </CheckBox>
-            <Label layoutX="48.0" layoutY="59.0" prefHeight="17.0" prefWidth="102.0" text="connection status" />
-            <Label layoutX="203.0" layoutY="6.0" prefHeight="17.0" prefWidth="91.0" text="Prompts status" />
-            <Label layoutX="48.0" layoutY="6.0" text="name Of Server" />
-            <Label layoutX="203.0" layoutY="31.0" text="Running or not" />
+            <Label fx:id="labelConnectionStatus0" layoutX="48.0" layoutY="59.0" prefHeight="17.0" prefWidth="102.0" text="connection status" />
+            <Label fx:id="labelPromptStatus0" layoutX="203.0" layoutY="6.0" prefHeight="17.0" prefWidth="91.0" text="Prompts status" />
+            <Label fx:id="labelNameOfServer0" layoutX="48.0" layoutY="6.0" text="name Of Server" />
+            <Label fx:id="labelRunning0" layoutX="203.0" layoutY="31.0" text="Running or not" />
             <Button layoutX="560.0" layoutY="28.0" mnemonicParsing="false" text="View config" />
          </children>
       </Pane>

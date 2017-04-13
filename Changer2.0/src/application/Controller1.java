@@ -1,5 +1,6 @@
 package application;
 
+import java.awt.Checkbox;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
@@ -13,14 +14,36 @@ public class Controller1 {
 	@FXML
 	private Text top;
 	@FXML
-	private Label label1;
+	private Label labelIpAdress0;
+	@FXML
+	private Label labelNameOfServer0;
+	@FXML
+	private Label labelConnectionStatus0;
+	@FXML
+	private Label labelPromptStatus0;
+	@FXML
+	private Label labelRunning0;
+	//@FXML
+	//private Checkbox checkBoxAll;
+	//@FXML
+	//private Checkbox checkBox0;
+	
+	
+	
+	Connecting checkConnection; 
+	
+	
 	
 
 	public void setNameOfEnv(String nameOfEnv) {
 		this.nameOfEnv = nameOfEnv;
 		parseForIp = new Parser(nameOfEnv);
 		top.setText(nameOfEnv);
-		label1.setText((parseForIp.parserIniForIP()).get(0).getIpAdress());
+		labelIpAdress0.setText((parseForIp.parserIniForIP()).get(0).getIpAdress());
+		
+		
+		checkConnection = new Connecting((parseForIp.parserIniForIP()).get(0).getIpAdress(),Main.settings.get("server", "user"),Main.settings.get("server", "password"));
+		
 
 	}
 
@@ -36,7 +59,7 @@ public class Controller1 {
 
 		System.out.println((parseForIp.parserIniForIP()).get(0).getIpAdress());
 		// System.out.println(parseForIp.parserIniForIP()[2]);
-
+		checkConnection.connect();
 	}
 
 }

@@ -123,9 +123,7 @@ public class Parser {
 			writer.println("[settings]");
 			writer.println("logPath = D:/MyLogFile.log");
 			writer.println("logName = MyLog");
-			writer.println("iniForEnv = D:/list.ini");
-			writer.println("[Second]");
-			writer.println("second = 2");
+			writer.println("iniForEnv = D:/list.ini");			
 			writer.close();
 
 			logger.info(settingsFileLocation + " created");
