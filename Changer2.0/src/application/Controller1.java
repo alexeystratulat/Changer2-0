@@ -39,9 +39,7 @@ public class Controller1 {
 		this.nameOfEnv = nameOfEnv;
 		parseForIp = new Parser(nameOfEnv);
 		top.setText(nameOfEnv);
-		labelIpAdress0.setText((parseForIp.parserIniForIP()).get(0).getIpAdress());
-		
-		
+		labelIpAdress0.setText((parseForIp.parserIniForIP()).get(0).getIpAdress());		
 		checkConnection = new Connecting((parseForIp.parserIniForIP()).get(0).getIpAdress(),Main.settings.get("server", "user"),Main.settings.get("server", "password"));
 		
 

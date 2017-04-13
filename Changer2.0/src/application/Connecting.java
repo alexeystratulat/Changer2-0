@@ -4,13 +4,14 @@ import java.io.BufferedReader;
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.InputStreamReader;
+import java.util.logging.Logger;
 
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
 
 public class Connecting {
-
+	static Logger logger = Logger.getLogger(Main.settings.get("settings", "logName"));
 	private String hostname;
 	private String username;
 	private String password;
@@ -20,11 +21,8 @@ public class Connecting {
 		this.hostname = hostname;
 		this.username = username;
 		this.password = password;
-		
-		
-		
-		
-		
+						
+		logger.info("hostname ="+ hostname + "; username =" + username +"; password ="+ password);
 	}
 
 	public void connect() {
@@ -92,8 +90,9 @@ public class Connecting {
 			conn.close();
 
 		} catch (IOException e) {
-			e.printStackTrace(System.err);
-			System.exit(2);
+			//e.printStackTrace(System.err);
+			//System.exit(2);
+			logger.warning("Connection error !");
 
 		}
 
