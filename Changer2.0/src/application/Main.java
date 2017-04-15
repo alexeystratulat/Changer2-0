@@ -21,6 +21,7 @@ public class Main extends Application {
 	public static Ini getSettings() {
 		return settings;
 	}
+
 	static WorkWithFile forFile;
 	static Parser pars;
 	static Ini settings;
@@ -53,20 +54,11 @@ public class Main extends Application {
 		forFile.creatingWorkingMainPath();
 		settings = new Ini(new File(forFile.creatingPathForSettings()));
 		forFile.deletingOfFolders();
-		//pars = new Parser();
-		//pars.creatingWorkingMainPath();
-		//settings = new Ini(new File(pars.creatingPathForSettings()));
-		//
-		
-		logger = Logger.getLogger(settings.get("settings", "logName"));
-	//	System.out.println(settings.getAll)
-		
-		logging();
-		//
 
-		//
+		logger = Logger.getLogger(settings.get("settings", "logName"));
+
+		logging();
 		
-		System.out.println("dsfdsfdsfdsfdsfdsfdsfdsfdsfds");
 		logger.info("App is started");
 
 		launch(args);

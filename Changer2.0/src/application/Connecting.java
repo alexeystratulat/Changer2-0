@@ -22,7 +22,7 @@ public class Connecting {
 		this.username = username;
 		this.password = password;
 						
-		logger.info("hostname ="+ hostname + "; username =" + username +"; password ="+ password);
+		logger.info("\nhostname ="+ hostname + "\nusername =" + username +"\npassword ="+ password);
 	}
 
 	public void connect() {

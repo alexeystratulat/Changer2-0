@@ -38,7 +38,7 @@ public class Parser {
 
 	public static String[] parserForEnvIni() {
 
-		logger.info("Parser for ENV INI is started");
+		logger.info("Parser for resourses file is started: "+ Main.settings.get("settings", "iniForEnv"));
 
 		try {
 			Ini list = new Ini(new File(Main.settings.get("settings", "iniForEnv")));
@@ -72,13 +72,14 @@ public class Parser {
 
 		Ini listOfIP;
 		try {
-			logger.info(Main.settings.get("settings", "iniForEnv"));
+			logger.info("Class used resourse file for creating arraylist: "+Main.settings.get("settings", "iniForEnv"));
 			listOfIP = new Ini(new File(Main.settings.get("settings", "iniForEnv")));
 			// creating arrayList with name of servers, Ip 
 			
 			Section section = listOfIP.get(serversIp);
 
 			for (String optionKey : section.keySet()) {
+				
 
 				
 				list.add(new Servers(section.get(optionKey), Main.settings.get("server", "user"),
@@ -89,7 +90,8 @@ public class Parser {
 			
 			
 			
-			//System.out.println(list);
+		//	System.out.println(list);
+			logger.info(list.toString());
 			
 
 			return list;

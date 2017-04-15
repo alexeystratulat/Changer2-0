@@ -22,7 +22,7 @@ import javafx.scene.layout.StackPane;
 import javafx.stage.Stage;
 
 public class Controller {
-	
+
 	WorkWithFile forFile;
 	static Logger logger = Logger.getLogger(Main.settings.get("settings", "logName"));
 
@@ -30,39 +30,35 @@ public class Controller {
 
 	ObservableList<String> listOfEnvForChoiceBox = FXCollections.observableArrayList(forEnvParserIni());
 
-	
-
-	
-
 	public Controller() {
-		
+
 		// TODO Auto-generated constructor stub
 	}
 
 	@FXML
 	public void nextButtonClicked() {
+		Parser parseForIp = new Parser(listForChoiceBox.getValue());
+		logger.info("NEXT> button is typed \n" + "ENV: " + listForChoiceBox.getValue() + "\nsize of choised env:  "
+				+ Integer.toString(parseForIp.parserIniForIP().size()));
 
-		
-		logger.info("NEXT> button is typed    " + listForChoiceBox.getValue());
-
-		//Parent root;
 		try {
-			
+
 			FXMLLoader fxmlLoader = new FXMLLoader();
-			if(true)
-			{fxmlLoader.setLocation(getClass().getResource("frame1.fxml"));}			
-			else
-			{fxmlLoader.setLocation(getClass().getResource("frameTest.fxml"));}
+			if (parseForIp.parserIniForIP().size() == 1) {
+				fxmlLoader.setLocation(getClass().getResource("frame1.fxml"));
+			} else {
+				System.out.println("start frame for a few");
+				fxmlLoader.setLocation(getClass().getResource("frameTest.fxml"));
+			}
 			fxmlLoader.load();
-			
+
 			Controller1 d1 = fxmlLoader.getController();
 			d1.setNameOfEnv(listForChoiceBox.getValue());
 			Parent p = fxmlLoader.getRoot();
 			Stage stage = new Stage();
-			stage.setScene(new Scene (p));	
+			stage.setScene(new Scene(p));
 			stage.setResizable(false);
 			stage.show();
-			
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -84,19 +80,10 @@ public class Controller {
 	@FXML
 	private void initialize() {
 		listForChoiceBox.setItems(listOfEnvForChoiceBox);
-		
-		System.out.println("INININININI");
+
 		forFile = new WorkWithFile();
 		forFile.deletingOfFolders();
-		
-		
-		
-		
-		
-		
-		
-		
-		
+
 	}
 
 	public String[] forEnvParserIni() {
@@ -107,5 +94,4 @@ public class Controller {
 
 	}
 
-	
 }

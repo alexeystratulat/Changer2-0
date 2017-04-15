@@ -75,7 +75,7 @@ public class Servers {
 
 	@Override
 	public String toString() {
-		return "Servers [ipAdress= " + ipAdress + ", name= " + name + ", password= " + password + "] ";
+		return"\n"+"Servers [ipAdress= " + ipAdress + ", name= " + name + ", password= " + password + "] ";
 	}
 	
 	

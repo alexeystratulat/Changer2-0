@@ -8,9 +8,7 @@ import java.util.logging.Logger;
 public class WorkWithFile {
 	private String mainFolder = "C:\\Starter";
 	private String settingsFileLocation = mainFolder + "\\settings.ini";
-	static Logger logger = Logger.getLogger("MyLog");
-	// static Logger logger = Logger.getLogger(Main.settings.get("settings",
-	// "logName"));
+	static Logger logger = Logger.getLogger("MyLog");	
 
 	File theDir = new File("C:\\Starter");
 
@@ -44,6 +42,9 @@ public class WorkWithFile {
 			writer.println("logPath = D:/MyLogFile.log");
 			writer.println("logName = MyLog");
 			writer.println("iniForEnv = D:/list.ini");
+			writer.println("[server]");
+			writer.println("user = default");
+			writer.println("password = default");
 			writer.close();
 
 			logger.info(settingsFileLocation + " created");

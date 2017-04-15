@@ -30,25 +30,20 @@ public class Controller1 {
 	private Label labelPromptStatus0;
 	@FXML
 	private Label labelRunning0;
-	//@FXML
-	//private Checkbox checkBoxAll;
-	//@FXML
-	//private Checkbox checkBox0;
-	
-	
-	
-	Connecting checkConnection; 
-	
-	
-	
+	// @FXML
+	// private Checkbox checkBoxAll;
+	// @FXML
+	// private Checkbox checkBox0;
+
+	Connecting checkConnection;
 
 	public void setNameOfEnv(String nameOfEnv) {
 		this.nameOfEnv = nameOfEnv;
 		parseForIp = new Parser(nameOfEnv);
 		top.setText(nameOfEnv);
-		labelIpAdress0.setText((parseForIp.parserIniForIP()).get(0).getIpAdress());		
-		checkConnection = new Connecting((parseForIp.parserIniForIP()).get(0).getIpAdress(),Main.settings.get("server", "user"),Main.settings.get("server", "password"));
-		
+		labelIpAdress0.setText((parseForIp.parserIniForIP()).get(0).getIpAdress());
+		checkConnection = new Connecting((parseForIp.parserIniForIP()).get(0).getIpAdress(),
+				Main.settings.get("server", "user"), Main.settings.get("server", "password"));
 
 	}
 
@@ -66,42 +61,30 @@ public class Controller1 {
 		// System.out.println(parseForIp.parserIniForIP()[2]);
 		checkConnection.connect();
 	}
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+
 	@FXML
 	private void onClickBackButton() {
 
-try {
-			
+		try {
+
 			FXMLLoader fxmlLoader = new FXMLLoader();
-			
-			fxmlLoader.setLocation(getClass().getResource("frame.fxml"));			
-			
+
+			fxmlLoader.setLocation(getClass().getResource("frame.fxml"));
+
 			fxmlLoader.load();
-			
-			
+
 			Parent p = fxmlLoader.getRoot();
 			Stage stage = new Stage();
-			stage.setScene(new Scene (p));	
+			stage.setScene(new Scene(p));
 			stage.setResizable(false);
 			stage.show();
-			
-			
-			
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
+
 	@FXML
 	public void onMouseClickedCancelBtn(InputEvent e) {
 		final Node source = (Node) e.getSource();
