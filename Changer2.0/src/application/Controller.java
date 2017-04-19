@@ -38,8 +38,8 @@ public class Controller {
 	@FXML
 	public void nextButtonClicked() {
 		Parser parseForIp = new Parser(listForChoiceBox.getValue());
-		logger.info("NEXT> button is typed \n" + "ENV: " + listForChoiceBox.getValue() + "\nsize of choised env:  "
-				+ Integer.toString(parseForIp.parserIniForIP().size()));
+		logger.info("\n=======\nNEXT> button is typed \n" + "ENV: " + listForChoiceBox.getValue() + "\nsize of choised env:  "
+				+ Integer.toString(parseForIp.parserIniForIP().size())+"\n=======");
 
 		try {
 
@@ -79,6 +79,7 @@ public class Controller {
 
 	@FXML
 	private void initialize() {
+		logger.info("\n\n===================    Program is started    =====================\n\n ");
 		listForChoiceBox.setItems(listOfEnvForChoiceBox);
 
 		forFile = new WorkWithFile();

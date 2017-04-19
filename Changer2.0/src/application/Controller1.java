@@ -2,6 +2,7 @@ package application;
 
 import java.awt.Checkbox;
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.logging.Logger;
 
 import javafx.fxml.FXML;
@@ -31,43 +32,57 @@ public class Controller1 {
 	private Label labelPromptStatus0;
 	@FXML
 	private Label labelRunning0;
-	 @FXML
-	 private CheckBox checkBoxAll;
-	 @FXML
-	 private CheckBox checkBox0;
+	@FXML
+	private CheckBox checkBoxAll;
+	@FXML
+	private CheckBox checkBox0;
 
 	Connecting checkConnection;
+	WorkWithFile creatingPath;
+
+	ArrayList<Servers> serversList = new ArrayList<Servers>();
 
 	public void setNameOfEnv(String nameOfEnv) {
+
 		this.nameOfEnv = nameOfEnv;
 		parseForIp = new Parser(nameOfEnv);
+		serversList = parseForIp.parserIniForIP();
 		top.setText(nameOfEnv);
-		labelIpAdress0.setText((parseForIp.parserIniForIP()).get(0).getIpAdress());
-		checkConnection = new Connecting((parseForIp.parserIniForIP()).get(0).getIpAdress(),
-				Main.settings.get("server", "user"), Main.settings.get("server", "password"));
+		//
+		creatingPath = new WorkWithFile(serversList.get(0).getServerName().toString());
+		creatingPath.creatingPathSourseFile();
 		
 		
-		
+		initializationStatusesOfServ0();
 
 	}
-	
-	
-	
-	
+
+	public void initializationStatusesOfServ0() {
+		
+		
+		
+		
+		checkConnection = new Connecting(serversList.get(0));
+		//
+		labelIpAdress0.setText(serversList.get(0).getIpAdress());
+		labelNameOfServer0.setText(serversList.get(0).getServerName());
+		labelConnectionStatus0.setText(checkConnection.connect());
+		labelRunning0.setText(checkConnection.statusTam());
+
+	}
 
 	public Controller1() {
-		
-		
-		logger.info(nameOfEnv);
+
+		//logger.info(nameOfEnv);
+		logger.info("\n\n===================    Starting of main window    =====================\n\n ");
 
 	}
 
 	@FXML
 	private void onClick() {
+		//System.out.println(serversList.toString());
 
-		System.out.println((parseForIp.parserIniForIP()).get(0).getIpAdress());
-		// System.out.println(parseForIp.parserIniForIP()[2]);
-		//checkConnection.connect();
+		initializationStatusesOfServ0();
 	}
 
 	@FXML
@@ -86,7 +101,6 @@ public class Controller1 {
 			stage.setScene(new Scene(p));
 			stage.setResizable(false);
 			stage.show();
-			
 
 		} catch (IOException e) {
 			e.printStackTrace();
@@ -101,25 +115,18 @@ public class Controller1 {
 		stage.close();
 
 	}
-	
+
 	@FXML
 	private void onClickCheckboxAll() {
-		
-		
-		    if(checkBoxAll.isSelected()){
-		    	System.out.println("SELECTED");
-		    	checkBox0.setSelected(true);
-		    }else {System.out.println("NOT SELECTED");
-		    	checkBox0.setSelected(false);
-		    }
-		    
-		    
-		    
-		
-		
-		
+
+		if (checkBoxAll.isSelected()) {
+			System.out.println("SELECTED");
+			checkBox0.setSelected(true);
+		} else {
+			System.out.println("NOT SELECTED");
+			checkBox0.setSelected(false);
+		}
+
 	}
-	
-	
 
 }

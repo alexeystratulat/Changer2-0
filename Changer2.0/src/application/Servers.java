@@ -1,15 +1,18 @@
 package application;
 
 import java.awt.Checkbox;
+import java.util.ArrayList;
 
 public class Servers {
 	
-	
+
 	
 	
 	private String ipAdress;
-	private String name;
+	private String userName;
 	private String password;
+	private String serverName;
+	
 	//
 	private String connectionStatus;
 	private String promptStatus;
@@ -25,13 +28,23 @@ public class Servers {
 		this.ipAdress = ipAdress;
 	}
 
-	public String getName() {
-		return name;
+	public String getUserName() {
+		return userName;
 	}
 
-	public void setName(String name) {
-		this.name = name;
+	public void setUserName(String userName) {
+		this.userName = userName;
 	}
+	
+	
+	public String getServerName() {
+		return serverName;
+	}
+
+	public void setServerName(String serverName) {
+		this.serverName = serverName;
+	}
+	
 
 	public String getPassword() {
 		return password;
@@ -67,15 +80,16 @@ public class Servers {
 
 	
 	
-	public Servers(String ipAdress, String name, String password) {
+	public Servers(String serverName, String ipAdress, String userName, String password) {
+		this.serverName = serverName;
 		this.ipAdress = ipAdress;
-		this.name = name;
+		this.userName = userName;
 		this.password = password;
 	}
 
 	@Override
 	public String toString() {
-		return"\n"+"Servers [ipAdress= " + ipAdress + ", name= " + name + ", password= " + password + "] ";
+		return"\n====\n"+"Servers : \n[serverName = " + serverName + "]\n[ipAdress= " + ipAdress + "]\n[userName= " + userName + "]\n[password= " + password + "]\n====\n";
 	}
 	
 	
