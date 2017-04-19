@@ -111,5 +111,60 @@ public class Connecting {
 		}
 
 	}
+	public String statusGuard() {
+
+		try {
+
+			conn.connect();
+
+			boolean isAuthenticated = conn.authenticateWithPassword(server.getUserName(), server.getPassword());
+
+			if (isAuthenticated == false)
+				throw new IOException("Authentication failed.");
+
+			Session sess = conn.openSession();
+
+			sess.execCommand("sc query 'rcguard'");
+
+			
+
+			InputStream stdout = new StreamGobbler(sess.getStdout());
+
+			BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
+			String status = "null";
+			while (true) {
+				String line = br.readLine();
+				if (line == null)
+					break;
+				
+
+				if (line.contains("RUNNING")) {
+
+					status = "running";
+				}
+
+				if (line.contains("STOPPED")) {
+
+					status = "stopped";
+				}
+
+			}
+			logger.info("STATUS FOR TAM CHECK"+"\n"+"ExitCode: " + sess.getExitStatus());
+
+			br.close();
+
+			sess.close();
+
+			conn.close();
+			return status;
+
+		} catch (IOException e) {
+			e.printStackTrace(System.err);
+			logger.warning("Connection error!");
+			return "Connection error!";
+
+		}
+
+	}
 
 }

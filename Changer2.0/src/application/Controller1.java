@@ -12,6 +12,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
+import javafx.scene.control.ToggleButton;
 import javafx.scene.input.InputEvent;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
@@ -33,9 +34,13 @@ public class Controller1 {
 	@FXML
 	private Label labelRunning0;
 	@FXML
+	private Label labelRunningGuard0;
+	@FXML
 	private CheckBox checkBoxAll;
 	@FXML
 	private CheckBox checkBox0;
+	@FXML
+	private ToggleButton toggleButtonTAM;
 
 	Connecting checkConnection;
 	WorkWithFile creatingPath;
@@ -46,41 +51,53 @@ public class Controller1 {
 
 		this.nameOfEnv = nameOfEnv;
 		parseForIp = new Parser(nameOfEnv);
+		// to get arraylist of servers
 		serversList = parseForIp.parserIniForIP();
 		top.setText(nameOfEnv);
 		//
 		creatingPath = new WorkWithFile(serversList.get(0).getServerName().toString());
 		creatingPath.creatingPathSourseFile();
-		
-		
+
 		initializationStatusesOfServ0();
 
 	}
 
 	public void initializationStatusesOfServ0() {
-		
-		
-		
-		
+
 		checkConnection = new Connecting(serversList.get(0));
 		//
 		labelIpAdress0.setText(serversList.get(0).getIpAdress());
 		labelNameOfServer0.setText(serversList.get(0).getServerName());
 		labelConnectionStatus0.setText(checkConnection.connect());
+		
+		
+		
+		if(checkConnection.statusTam().contains("running")){
+			
+		toggleButtonTAM.setSelected(true);
+		
+		toggleButtonTAM.setText("running");
+		}else{
+			toggleButtonTAM.setSelected(false);
+			toggleButtonTAM.setText("stopped");	
+			
+			
+		}
+		
 		labelRunning0.setText(checkConnection.statusTam());
-
+		labelRunningGuard0.setText(checkConnection.statusGuard());
 	}
 
 	public Controller1() {
 
-		//logger.info(nameOfEnv);
+		// logger.info(nameOfEnv);
 		logger.info("\n\n===================    Starting of main window    =====================\n\n ");
 
 	}
 
 	@FXML
 	private void onClick() {
-		//System.out.println(serversList.toString());
+		// System.out.println(serversList.toString());
 
 		initializationStatusesOfServ0();
 	}
@@ -125,6 +142,19 @@ public class Controller1 {
 		} else {
 			System.out.println("NOT SELECTED");
 			checkBox0.setSelected(false);
+		}
+
+	}
+	
+	@FXML
+	private void onClickCheckbox0() {
+
+		if (checkBox0.isSelected()) {
+			System.out.println("SELECTED");
+			checkBoxAll.setSelected(true);
+		} else {
+			System.out.println("NOT SELECTED");
+			checkBoxAll.setSelected(false);
 		}
 
 	}
