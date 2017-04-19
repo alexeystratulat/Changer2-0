@@ -7,6 +7,8 @@ import java.io.InputStreamReader;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import javax.annotation.processing.SupportedSourceVersion;
+
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
@@ -16,9 +18,17 @@ public class Connecting {
 
 	Servers server;
 	Connection conn;
+	String status;
 
 	public Connecting(Servers server) {
 		this.server = server;
+		logger.info(server.toString());
+		conn = new Connection(server.getIpAdress());
+	}
+
+	public Connecting(Servers server, String status) {
+		this.server = server;
+		this.status = status;
 		logger.info(server.toString());
 		conn = new Connection(server.getIpAdress());
 	}
@@ -38,8 +48,7 @@ public class Connecting {
 
 			sess.execCommand("pwd");
 
-			logger.info("CONNECTING CHECK"+ "\n" + "ExitCode: " + sess.getExitStatus());
-			
+			logger.info("CONNECTING CHECK" + "\n" + "ExitCode: " + sess.getExitStatus());
 
 			sess.close();
 
@@ -48,7 +57,7 @@ public class Connecting {
 
 		} catch (IOException e) {
 			// e.printStackTrace(System.err);
-			
+
 			logger.warning("Connection error !");
 			return "Connection error !";
 
@@ -71,8 +80,6 @@ public class Connecting {
 
 			sess.execCommand("sc query 'rctam'");
 
-			
-
 			InputStream stdout = new StreamGobbler(sess.getStdout());
 
 			BufferedReader br = new BufferedReader(new InputStreamReader(stdout));
@@ -81,7 +88,6 @@ public class Connecting {
 				String line = br.readLine();
 				if (line == null)
 					break;
-				
 
 				if (line.contains("RUNNING")) {
 
@@ -94,7 +100,7 @@ public class Connecting {
 				}
 
 			}
-			logger.info("STATUS FOR TAM CHECK"+"\n"+"ExitCode: " + sess.getExitStatus());
+			logger.info("STATUS FOR TAM CHECK" + "\n" + "ExitCode: " + sess.getExitStatus());
 
 			br.close();
 
@@ -111,7 +117,8 @@ public class Connecting {
 		}
 
 	}
-	public String statusGuard() {
+
+	public String restartingTam() {
 
 		try {
 
@@ -124,7 +131,14 @@ public class Connecting {
 
 			Session sess = conn.openSession();
 
-			sess.execCommand("sc query 'rcguard'");
+			if (status.equals("running")) {
+				sess.execCommand("bin/stop_tas");
+				System.out.println("running ---> stop");
+
+			} else {
+				sess.execCommand("bin/start_tas");
+				System.out.println("stopped ---> run");
+			}
 
 			
 
@@ -136,7 +150,6 @@ public class Connecting {
 				String line = br.readLine();
 				if (line == null)
 					break;
-				
 
 				if (line.contains("RUNNING")) {
 
@@ -149,7 +162,7 @@ public class Connecting {
 				}
 
 			}
-			logger.info("STATUS FOR TAM CHECK"+"\n"+"ExitCode: " + sess.getExitStatus());
+			logger.info("STATUS FOR TAM CHECK" + "\n" + "ExitCode: " + sess.getExitStatus());
 
 			br.close();
 
@@ -160,8 +173,8 @@ public class Connecting {
 
 		} catch (IOException e) {
 			e.printStackTrace(System.err);
-			logger.warning("Connection error!");
-			return "Connection error!";
+			logger.warning("Connection error !");
+			return "Connection error !";
 
 		}
 

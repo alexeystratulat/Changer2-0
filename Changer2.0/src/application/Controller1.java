@@ -1,6 +1,7 @@
 package application;
 
 import java.awt.Checkbox;
+import java.awt.Color;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
@@ -31,10 +32,6 @@ public class Controller1 {
 	private Label labelConnectionStatus0;
 	@FXML
 	private Label labelPromptStatus0;
-	@FXML
-	private Label labelRunning0;
-	@FXML
-	private Label labelRunningGuard0;
 	@FXML
 	private CheckBox checkBoxAll;
 	@FXML
@@ -69,23 +66,18 @@ public class Controller1 {
 		labelIpAdress0.setText(serversList.get(0).getIpAdress());
 		labelNameOfServer0.setText(serversList.get(0).getServerName());
 		labelConnectionStatus0.setText(checkConnection.connect());
-		
-		
-		
-		if(checkConnection.statusTam().contains("running")){
-			
-		toggleButtonTAM.setSelected(true);
-		
-		toggleButtonTAM.setText("running");
-		}else{
+
+		toggleButtonTAM.setText(checkConnection.statusTam());
+
+		if (toggleButtonTAM.getText().contains("running")) {
+
+			toggleButtonTAM.setSelected(true);
+
+		} else {
 			toggleButtonTAM.setSelected(false);
-			toggleButtonTAM.setText("stopped");	
-			
-			
+
 		}
-		
-		labelRunning0.setText(checkConnection.statusTam());
-		labelRunningGuard0.setText(checkConnection.statusGuard());
+
 	}
 
 	public Controller1() {
@@ -145,7 +137,7 @@ public class Controller1 {
 		}
 
 	}
-	
+
 	@FXML
 	private void onClickCheckbox0() {
 
@@ -156,6 +148,15 @@ public class Controller1 {
 			System.out.println("NOT SELECTED");
 			checkBoxAll.setSelected(false);
 		}
+
+	}
+
+	@FXML
+	private void onClickToggleButtonTamStatus0() {
+		System.out.println("onClickToggleButtonTamStatus0");
+		checkConnection = new Connecting(serversList.get(0),toggleButtonTAM.getText().toString());
+		checkConnection.restartingTam();
+		initializationStatusesOfServ0();
 
 	}
 
