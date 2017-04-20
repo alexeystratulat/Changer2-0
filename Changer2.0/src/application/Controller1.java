@@ -44,19 +44,23 @@ public class Controller1 {
 
 	Connecting checkConnection;
 	WorkWithFile creatingPath;
+	RemoteFiles getVportal;
 
 	ArrayList<Servers> serversList = new ArrayList<Servers>();
 
 	public void setNameOfEnv(String nameOfEnv) {
 
 		this.nameOfEnv = nameOfEnv;
-		parseForIp = new Parser(nameOfEnv);
-		// to get arraylist of servers
-		serversList = parseForIp.parserIniForIP();
 		top.setText(nameOfEnv);
+		// to get arraylist of servers
+		parseForIp = new Parser(nameOfEnv);
+		serversList = parseForIp.parserIniForIP();
 		//
 		creatingPath = new WorkWithFile(serversList.get(0).getServerName().toString());
 		creatingPath.creatingPathSourseFile();
+		//
+		getVportal = new RemoteFiles(serversList.get(0));
+		getVportal.toGetFile();
 
 		initializationStatusesOfServ0();
 

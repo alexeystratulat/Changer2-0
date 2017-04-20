@@ -49,12 +49,14 @@ public class WorkWithFile {
 			settingsFile.createNewFile();
 			PrintWriter writer = new PrintWriter(settingsFileLocation, "UTF-8");
 			writer.println("[settings]");
+			writer.println("mainDirectory = C:/Starter/");
 			writer.println("logPath = D:/MyLogFile");
 			writer.println("logName = MyLog");
 			writer.println("iniForEnv = D:/list.ini");
 			writer.println("[server]");
 			writer.println("user = default");
 			writer.println("password = default");
+			writer.println("Vportal = /cygdrive/c/Windows/Vportal.ini");
 			writer.close();
 
 			logger.info(settingsFileLocation + " created");
@@ -68,6 +70,25 @@ public class WorkWithFile {
 
 	}
 
+	
+
+	public void creatingWorkingMainPath() {
+		logger.info("Creating main path is started");
+
+		File starterDirectory = new File(mainFolder);
+
+		if (!starterDirectory.exists()) {
+
+			starterDirectory.mkdir();
+			logger.info("DIR " + mainFolder + " created");
+
+		} else {
+
+			logger.info(mainFolder + " is exist");
+
+		}
+
+	}
 	public void creatingPathSourseFile() {
 		logger.info("Creating sourse path is started");
 
@@ -88,23 +109,10 @@ public class WorkWithFile {
 		
 
 	}
-
-	public void creatingWorkingMainPath() {
-		logger.info("Creating main path is started");
-
-		File starterDirectory = new File(mainFolder);
-
-		if (!starterDirectory.exists()) {
-
-			starterDirectory.mkdir();
-			logger.info("DIR " + mainFolder + " created");
-
-		} else {
-
-			logger.info(mainFolder + " is exist");
-
-		}
-
-	}
+	
+	
+	
+	
+	
 
 }
