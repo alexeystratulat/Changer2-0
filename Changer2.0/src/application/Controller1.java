@@ -140,7 +140,7 @@ public class Controller1 {
 		final Node source = (Node) e.getSource();
 		final Stage stage = (Stage) source.getScene().getWindow();
 		stage.close();
-
+//
 	}
 
 	@FXML
