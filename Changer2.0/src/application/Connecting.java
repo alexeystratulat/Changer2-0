@@ -9,9 +9,13 @@ import java.util.logging.Logger;
 
 import javax.annotation.processing.SupportedSourceVersion;
 
+
+
 import ch.ethz.ssh2.Connection;
+import ch.ethz.ssh2.SCPClient;
 import ch.ethz.ssh2.Session;
 import ch.ethz.ssh2.StreamGobbler;
+import javafx.application.Platform;
 
 public class Connecting {
 	static Logger logger = Logger.getLogger(Main.settings.get("settings", "logName"));
@@ -45,7 +49,8 @@ public class Connecting {
 				throw new IOException("Authentication failed.");
 
 			Session sess = conn.openSession();
-
+			
+			
 			sess.execCommand("pwd");
 
 			logger.info("CONNECTING CHECK" + "\n" + "ExitCode: " + sess.getExitStatus());
@@ -180,4 +185,9 @@ public class Connecting {
 
 	}
 
+	
+	
+	
+	
+	
 }

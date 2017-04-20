@@ -6,6 +6,9 @@ import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
+import javax.rmi.CORBA.Util;
+
+import javafx.application.Platform;
 import javafx.fxml.FXML;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
@@ -61,22 +64,37 @@ public class Controller1 {
 
 	public void initializationStatusesOfServ0() {
 
-		checkConnection = new Connecting(serversList.get(0));
-		//
-		labelIpAdress0.setText(serversList.get(0).getIpAdress());
-		labelNameOfServer0.setText(serversList.get(0).getServerName());
-		labelConnectionStatus0.setText(checkConnection.connect());
+		Runnable task = new Runnable() {
+			public void run() {
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+						//
+						checkConnection = new Connecting(serversList.get(0));
 
-		toggleButtonTAM.setText(checkConnection.statusTam());
+						labelIpAdress0.setText(serversList.get(0).getIpAdress());
+						labelNameOfServer0.setText(serversList.get(0).getServerName());
+						labelConnectionStatus0.setText(checkConnection.connect());
 
-		if (toggleButtonTAM.getText().contains("running")) {
+						toggleButtonTAM.setText(checkConnection.statusTam());
 
-			toggleButtonTAM.setSelected(true);
+						if (toggleButtonTAM.getText().contains("running")) {
 
-		} else {
-			toggleButtonTAM.setSelected(false);
+							toggleButtonTAM.setSelected(true);
 
-		}
+						} else {
+							toggleButtonTAM.setSelected(false);
+							toggleButtonTAM.getText().contains("stopped");
+						}
+						//
+					}
+				});
+
+			}
+		};
+		Thread backgroundThread = new Thread(task);
+		backgroundThread.setDaemon(true);
+		backgroundThread.start();
 
 	}
 
@@ -153,10 +171,27 @@ public class Controller1 {
 
 	@FXML
 	private void onClickToggleButtonTamStatus0() {
+
 		System.out.println("onClickToggleButtonTamStatus0");
-		checkConnection = new Connecting(serversList.get(0),toggleButtonTAM.getText().toString());
-		checkConnection.restartingTam();
-		initializationStatusesOfServ0();
+
+		Runnable task = new Runnable() {
+			public void run() {
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+
+						checkConnection = new Connecting(serversList.get(0), toggleButtonTAM.getText().toString());
+						toggleButtonTAM.setText("waiting...");
+						checkConnection.restartingTam();
+						initializationStatusesOfServ0();
+					}
+				});
+
+			}
+		};
+		Thread backgroundThread = new Thread(task);
+		backgroundThread.setDaemon(true);
+		backgroundThread.start();
 
 	}
 
