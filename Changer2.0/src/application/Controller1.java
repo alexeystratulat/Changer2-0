@@ -60,7 +60,7 @@ public class Controller1 {
 		creatingPath.creatingPathSourseFile();
 		//
 		getVportal = new RemoteFiles(serversList.get(0));
-		getVportal.toGetFile();
+		getVportal.toGetFile();//getting files and making alternate Vportals 
 
 		initializationStatusesOfServ0();
 

@@ -100,5 +100,8 @@
          </children>
       </Pane>
       <Separator layoutX="14.0" layoutY="149.0" prefHeight="4.0" prefWidth="863.0" />
+      <Button disable="true" layoutX="300.0" layoutY="235.0" mnemonicParsing="false" text="switch to automation " />
+      <Button disable="true" layoutX="463.0" layoutY="235.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="132.0" text="switch to manual" />
+      <Button disable="true" layoutX="626.0" layoutY="235.0" mnemonicParsing="false" text="restarting" />
    </children>
 </AnchorPane>

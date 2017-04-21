@@ -53,10 +53,24 @@ public class WorkWithFile {
 			writer.println("logPath = D:/MyLogFile");
 			writer.println("logName = MyLog");
 			writer.println("iniForEnv = D:/list.ini");
+			writer.println("");
 			writer.println("[server]");
 			writer.println("user = default");
 			writer.println("password = default");
 			writer.println("Vportal = /cygdrive/c/Windows/Vportal.ini");
+			writer.println("");
+			writer.println("[prompts]");
+			writer.println("");
+			writer.println("MManual = default");
+			writer.println("MAutomated = default");
+			writer.println("");			
+			writer.println("NManual = default");
+			writer.println("NAutomated = default");
+			writer.println("");			
+			writer.println("BManual = default");
+			writer.println("BAutomated = default");
+			writer.println("");
+			
 			writer.close();
 
 			logger.info(settingsFileLocation + " created");

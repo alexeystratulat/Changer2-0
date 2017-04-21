@@ -67,7 +67,13 @@ public class RemoteFiles {
 		} catch (Exception e) {
 			return error;
 		}
-	
+		//creating and editing alternative Vportals
+		Editor makingVportal = new Editor(server ,Main.settings.get("settings", "mainDirectory")+server.getServerName());
+		makingVportal.makingVportalSt();
+		makingVportal.makingVportalAutomation();
+		
+		
+		
 
 		return done;
 	}
