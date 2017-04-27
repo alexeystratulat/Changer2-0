@@ -45,6 +45,7 @@ public class Controller1 {
 	Connecting checkConnection;
 	WorkWithFile creatingPath;
 	RemoteFiles getVportal;
+	ComparingFiles compare;
 
 	ArrayList<Servers> serversList = new ArrayList<Servers>();
 
@@ -60,7 +61,7 @@ public class Controller1 {
 		creatingPath.creatingPathSourseFile();
 		//
 		getVportal = new RemoteFiles(serversList.get(0));
-		getVportal.toGetFile();//getting files and making alternate Vportals 
+		getVportal.toGetFile();// getting files and making alternate Vportals
 
 		initializationStatusesOfServ0();
 
@@ -75,11 +76,21 @@ public class Controller1 {
 					public void run() {
 						//
 						checkConnection = new Connecting(serversList.get(0));
+						compare = new ComparingFiles(serversList.get(0));
 
 						labelIpAdress0.setText(serversList.get(0).getIpAdress());
 						labelNameOfServer0.setText(serversList.get(0).getServerName());
 						labelConnectionStatus0.setText(checkConnection.connect());
+						//
+						labelPromptStatus0.setText(compare.compareFiles());
 
+						if (labelPromptStatus0.getText().contains("manual")
+								|| labelPromptStatus0.getText().contains("automated")) {
+
+							labelPromptStatus0.setDisable(false);
+
+						}
+						//
 						toggleButtonTAM.setText(checkConnection.statusTam());
 
 						if (toggleButtonTAM.getText().contains("running")) {
@@ -144,7 +155,7 @@ public class Controller1 {
 		final Node source = (Node) e.getSource();
 		final Stage stage = (Stage) source.getScene().getWindow();
 		stage.close();
-//
+		//
 	}
 
 	@FXML
@@ -157,6 +168,13 @@ public class Controller1 {
 			System.out.println("NOT SELECTED");
 			checkBox0.setSelected(false);
 		}
+
+	}
+
+	@FXML
+	private void onClickChangePrompts0() {
+
+		System.out.println("CLICKED");
 
 	}
 
