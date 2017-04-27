@@ -63,14 +63,14 @@ public class WorkWithFile {
 			writer.println("");
 			writer.println("MManual = default");
 			writer.println("MAutomated = default");
-			writer.println("");			
+			writer.println("");
 			writer.println("NManual = default");
 			writer.println("NAutomated = default");
-			writer.println("");			
+			writer.println("");
 			writer.println("BManual = default");
 			writer.println("BAutomated = default");
 			writer.println("");
-			
+
 			writer.close();
 
 			logger.info(settingsFileLocation + " created");
@@ -83,8 +83,6 @@ public class WorkWithFile {
 		return settingsFileLocation;
 
 	}
-
-	
 
 	public void creatingWorkingMainPath() {
 		logger.info("Creating main path is started");
@@ -103,6 +101,7 @@ public class WorkWithFile {
 		}
 
 	}
+
 	public void creatingPathSourseFile() {
 		logger.info("Creating sourse path is started");
 
@@ -117,16 +116,20 @@ public class WorkWithFile {
 			logger.info(mainFolder + "\\" + nameOfserv + " is exist");
 
 		}
-		
-		
-		
-		
 
 	}
-	
-	
-	
-	
-	
+
+	public void deletingSourseFilesInPath() {
+		logger.info("Creating sourse path is started");
+
+		File theDir = new File(mainFolder + "\\" + nameOfserv);
+
+		for (File file : theDir.listFiles()) {
+			file.delete();
+			logger.info(mainFolder + "\\" + nameOfserv + file.getName().toString() + "----> deleted");
+
+		}
+
+	}
 
 }

@@ -14,6 +14,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.Button;
 import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
@@ -41,10 +42,13 @@ public class Controller1 {
 	private CheckBox checkBox0;
 	@FXML
 	private ToggleButton toggleButtonTAM;
+	@FXML
+	private Button restartButton;
 
 	Connecting checkConnection;
 	WorkWithFile creatingPath;
 	RemoteFiles getVportal;
+	RemoteFiles putVportal;
 	ComparingFiles compare;
 
 	ArrayList<Servers> serversList = new ArrayList<Servers>();
@@ -58,10 +62,7 @@ public class Controller1 {
 		serversList = parseForIp.parserIniForIP();
 		//
 		creatingPath = new WorkWithFile(serversList.get(0).getServerName().toString());
-		creatingPath.creatingPathSourseFile();
-		//
-		getVportal = new RemoteFiles(serversList.get(0));
-		getVportal.toGetFile();// getting files and making alternate Vportals
+		creatingPath.creatingPathSourseFile(); //
 
 		initializationStatusesOfServ0();
 
@@ -74,6 +75,13 @@ public class Controller1 {
 				Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
+
+						creatingPath.deletingSourseFilesInPath();
+
+						getVportal = new RemoteFiles(serversList.get(0));
+						getVportal.toGetFile();// getting files and making
+												// alternate Vportals
+
 						//
 						checkConnection = new Connecting(serversList.get(0));
 						compare = new ComparingFiles(serversList.get(0));
@@ -96,10 +104,12 @@ public class Controller1 {
 						if (toggleButtonTAM.getText().contains("running")) {
 
 							toggleButtonTAM.setSelected(true);
+							restartButton.setDisable(false);
 
 						} else {
 							toggleButtonTAM.setSelected(false);
 							toggleButtonTAM.getText().contains("stopped");
+							restartButton.setDisable(false);
 						}
 						//
 					}
@@ -174,7 +184,26 @@ public class Controller1 {
 	@FXML
 	private void onClickChangePrompts0() {
 
-		System.out.println("CLICKED");
+		Runnable task = new Runnable() {
+			public void run() {
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+
+						putVportal = new RemoteFiles(serversList.get(0), labelPromptStatus0.getText());
+						putVportal.toPutFile();
+
+						initializationStatusesOfServ0();
+						System.out.println("CLICKED");
+
+					}
+				});
+
+			}
+		};
+		Thread backgroundThread = new Thread(task);
+		backgroundThread.setDaemon(true);
+		backgroundThread.start();
 
 	}
 
@@ -206,6 +235,28 @@ public class Controller1 {
 						toggleButtonTAM.setText("waiting...");
 						checkConnection.restartingTam();
 						initializationStatusesOfServ0();
+					}
+				});
+
+			}
+		};
+		Thread backgroundThread = new Thread(task);
+		backgroundThread.setDaemon(true);
+		backgroundThread.start();
+
+	}
+
+	@FXML
+	private void onClickRestartButton() {
+
+		System.out.println("onClickRestartButton");
+
+		Runnable task = new Runnable() {
+			public void run() {
+				Platform.runLater(new Runnable() {
+					@Override
+					public void run() {
+
 					}
 				});
 
