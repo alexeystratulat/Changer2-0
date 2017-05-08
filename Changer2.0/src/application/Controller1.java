@@ -267,5 +267,26 @@ public class Controller1 {
 		backgroundThread.start();
 
 	}
+	@FXML
+	private void toShowConfigWindow() {
+
+		try {
+
+			FXMLLoader fxmlLoader = new FXMLLoader();			
+				fxmlLoader.setLocation(getClass().getResource("frameTest.fxml"));			
+				System.out.println("start frame for a few");				
+						fxmlLoader.load();
+			Controller123 d1 = fxmlLoader.getController();			
+			Parent p = fxmlLoader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(p));
+			stage.setResizable(false);
+			stage.show();
+
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
 
 }
