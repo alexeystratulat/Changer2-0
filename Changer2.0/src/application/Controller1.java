@@ -273,10 +273,10 @@ public class Controller1 {
 		try {
 
 			FXMLLoader fxmlLoader = new FXMLLoader();			
-				fxmlLoader.setLocation(getClass().getResource("frameTest.fxml"));			
+				fxmlLoader.setLocation(getClass().getResource("frameConfig.fxml"));			
 				System.out.println("start frame for a few");				
 						fxmlLoader.load();
-			Controller123 d1 = fxmlLoader.getController();			
+			ControllerConfig d1 = fxmlLoader.getController();			
 			Parent p = fxmlLoader.getRoot();
 			Stage stage = new Stage();
 			stage.setScene(new Scene(p));

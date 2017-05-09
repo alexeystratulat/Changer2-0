@@ -1,10 +1,16 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.scene.control.Button?>
+<?import javafx.scene.control.TextArea?>
+<?import javafx.scene.control.TextField?>
 <?import javafx.scene.layout.AnchorPane?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="882.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller123">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="882.0" prefWidth="792.0" xmlns="http://javafx.com/javafx/8.0.111" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.ControllerConfig">
    <children>
-      <Button layoutX="283.0" layoutY="843.0" mnemonicParsing="false" onAction="#onClickRestartButton" text="Button" />
+      <Button layoutX="657.0" layoutY="845.0" mnemonicParsing="false" onAction="#onClickRestartButton" prefHeight="25.0" prefWidth="52.0" text="Save" />
+      <TextArea fx:id="YourTextArea" prefHeight="833.0" prefWidth="792.0" />
+      <Button layoutX="726.0" layoutY="845.0" mnemonicParsing="false" text="Cancel" />
+      <TextField layoutX="14.0" layoutY="845.0" prefHeight="25.0" prefWidth="157.0" />
+      <Button layoutX="171.0" layoutY="845.0" mnemonicParsing="false" text="Search" />
    </children>
 </AnchorPane>
