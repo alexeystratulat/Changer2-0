@@ -55,7 +55,9 @@ public class ComparingFiles {
 		File vportalFile = new File(vportal);
 		File vportal_stFile = new File(vportal_st);
 		File vportal_auFile = new File(vportal_au);
-		
+		System.out.println("vportal "+ vportalFile.length());
+		System.out.println("vportal_st "+ vportal_stFile.length());
+		System.out.println("vportal_au "+ vportal_auFile.length());
 		
 		
 		
