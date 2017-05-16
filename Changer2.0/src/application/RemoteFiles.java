@@ -118,5 +118,43 @@ public class RemoteFiles {
 		return "done";
 
 	}
+	
+	public String toPutModfifiedFile() {
+		String done = "connected";
+		String error = "connection error!";
+
+		try {
+
+			JSch jsch = new JSch();
+			Session session = jsch.getSession(server.getUserName(), server.getIpAdress(), port);
+			session.setPassword(server.getPassword());
+			session.setConfig("StrictHostKeyChecking", " no");
+			System.out.println(server.getIpAdress().toString() + " Establishing Connection...");
+			session.connect();
+			System.out.println(server.getIpAdress().toString() + " Connection established.");
+
+			ChannelSftp sftpChannel = (ChannelSftp) session.openChannel("sftp");
+			sftpChannel.connect();
+			System.out.println(server.getIpAdress().toString() + " SFTP Channel created.");
+			//
+
+			
+			
+			
+		
+				
+			sftpChannel.put(Main.settings.get("settings", "mainDirectory")+server.getServerName() + "/" + "Vportal.ini", Main.settings.get("server", "Vportal"));
+			
+
+			sftpChannel.disconnect();
+			session.disconnect();
+
+		} catch (Exception e) {
+			return error;
+		}
+
+		return "done";
+
+	}
 
 }

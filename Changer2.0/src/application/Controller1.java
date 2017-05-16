@@ -267,16 +267,19 @@ public class Controller1 {
 		backgroundThread.start();
 
 	}
+
 	@FXML
 	private void toShowConfigWindow() {
 
 		try {
 
-			FXMLLoader fxmlLoader = new FXMLLoader();			
-				fxmlLoader.setLocation(getClass().getResource("frameConfig.fxml"));			
-				System.out.println("start frame for a few");				
-						fxmlLoader.load();
-			ControllerConfig d1 = fxmlLoader.getController();			
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(getClass().getResource("frameConfig.fxml"));
+			System.out.println("start frame for a few");
+			fxmlLoader.load();
+			ControllerConfig d1 = fxmlLoader.getController();
+			d1.setNameOfEnvConfig(nameOfEnv);
+			d1.setServer(serversList.get(0));
 			Parent p = fxmlLoader.getRoot();
 			Stage stage = new Stage();
 			stage.setScene(new Scene(p));
