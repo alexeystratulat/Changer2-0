@@ -1,11 +1,12 @@
 package application;
 
+import java.io.BufferedWriter;
 import java.io.File;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
-
+import java.io.OutputStreamWriter;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -47,11 +48,32 @@ public class ControllerConfig {
 	private void onClickRestartButton() throws FileNotFoundException {
 
 		FileWriter fw = null;
+		//
+		
+		//
 		try
 		{
-		    fw = new FileWriter(Main.settings.get("settings", "mainDirectory") + server.getServerName() + "/" + "Vportal.ini",true);
-		    fw.write(YourTextArea.getText());
-		    //textArea.write(fw);
+		    fw = new FileWriter(Main.settings.get("settings", "mainDirectory") + server.getServerName() + "/" + "VportalAlternative.ini",true);
+		    BufferedWriter writer = new BufferedWriter(fw);
+		   
+		    for (String line : YourTextArea.getText().split("\\n")){ 
+		    	System.out.println(line);
+		    	//fw.write(line);
+		    	
+		    	
+		    	
+		    	
+		    	writer.write(line);
+		    	writer.newLine();
+		    	
+		    }
+		    writer.close();
+           
+		   // 
+		   // fw.write(System.getProperty("line.separator"));
+		  //  fw.write(YourTextArea.getText());
+		  // YourTextArea.write(fw);
+		   // for (String line : YourTextArea.getText().split("\\n")) doStuffWithLine(line);
 		}
 		catch (IOException ex) 
 		    {
@@ -107,8 +129,8 @@ public class ControllerConfig {
 	@FXML
 	public void onMouseClickedCancelBtn(InputEvent e) {
 		
-		RemoteFiles fileToServ = new RemoteFiles(server);
-		fileToServ.toPutModfifiedFile();
+	//	RemoteFiles fileToServ = new RemoteFiles(server);
+	//	fileToServ.toPutModfifiedFile();
 		
 		final Node source = (Node) e.getSource();
 		final Stage stage = (Stage) source.getScene().getWindow();
