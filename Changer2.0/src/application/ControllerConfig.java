@@ -7,6 +7,7 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.Scanner;
 import java.util.logging.Logger;
 
@@ -46,6 +47,15 @@ public class ControllerConfig {
 
 	@FXML
 	private void onClickRestartButton() throws FileNotFoundException {
+		
+		
+		PrintWriter writer1 = new PrintWriter(Main.settings.get("settings", "mainDirectory") + server.getServerName() + "/" + "VportalAlternative.ini");
+		writer1.print("");
+		writer1.close();
+		
+		
+		
+		
 
 		FileWriter fw = null;
 		//
@@ -55,9 +65,9 @@ public class ControllerConfig {
 		{
 		    fw = new FileWriter(Main.settings.get("settings", "mainDirectory") + server.getServerName() + "/" + "VportalAlternative.ini",true);
 		    BufferedWriter writer = new BufferedWriter(fw);
-		   
+		    fw.write("");
 		    for (String line : YourTextArea.getText().split("\\n")){ 
-		    	System.out.println(line);
+		    	//System.out.println(line);
 		    	//fw.write(line);
 		    	
 		    	
