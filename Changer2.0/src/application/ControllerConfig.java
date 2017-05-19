@@ -26,6 +26,7 @@ public class ControllerConfig {
 
 	private String nameOfEnv;
 	private Servers server;
+	private String vportal = "Vportal.ini";
 
 	public void setNameOfEnvConfig(String nameOfEnv) {
 
@@ -49,7 +50,7 @@ public class ControllerConfig {
 	private void onClickRestartButton() throws FileNotFoundException {
 		
 		
-		PrintWriter writer1 = new PrintWriter(Main.settings.get("settings", "mainDirectory") + server.getServerName() + "/" + "VportalAlternative.ini");
+		PrintWriter writer1 = new PrintWriter(Main.settings.get("settings", "mainDirectory") + server.getServerName() + "/" + vportal);
 		writer1.print("");
 		writer1.close();
 		
@@ -63,7 +64,7 @@ public class ControllerConfig {
 		//
 		try
 		{
-		    fw = new FileWriter(Main.settings.get("settings", "mainDirectory") + server.getServerName() + "/" + "VportalAlternative.ini",true);
+		    fw = new FileWriter(Main.settings.get("settings", "mainDirectory") + server.getServerName() + "/" + vportal,true);
 		    BufferedWriter writer = new BufferedWriter(fw);
 		    fw.write("");
 		    for (String line : YourTextArea.getText().split("\\n")){ 
@@ -139,8 +140,8 @@ public class ControllerConfig {
 	@FXML
 	public void onMouseClickedCancelBtn(InputEvent e) {
 		
-	//	RemoteFiles fileToServ = new RemoteFiles(server);
-	//	fileToServ.toPutModfifiedFile();
+		RemoteFiles fileToServ = new RemoteFiles(server);
+		fileToServ.toPutModfifiedFile();
 		
 		final Node source = (Node) e.getSource();
 		final Stage stage = (Stage) source.getScene().getWindow();
