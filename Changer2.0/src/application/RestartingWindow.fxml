@@ -1,10 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.control.*?>
 <?import java.lang.*?>
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.layout.AnchorPane?>
 
 
-<AnchorPane xmlns:fx="http://javafx.com/fxml/1" xmlns="http://javafx.com/javafx/8" fx:controller="application.RestartingWindowForReboot">
-	<!-- TODO Add Nodes -->
+<AnchorPane xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.RestartingWindowForReboot">
+   <children>
+      <AnchorPane layoutY="-6.0" prefHeight="139.0" prefWidth="436.0">
+         <children>
+            <ProgressBar fx:id="progressBar" layoutX="38.0" layoutY="72.0" prefHeight="18.0" prefWidth="361.0" progress="0.0" />
+         </children>
+      </AnchorPane>
+   </children>
 </AnchorPane>

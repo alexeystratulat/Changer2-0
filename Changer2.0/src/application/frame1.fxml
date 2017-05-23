@@ -100,6 +100,6 @@
          </children>
       </Pane>
       <Separator layoutX="14.0" layoutY="149.0" prefHeight="4.0" prefWidth="828.0" />
-      <Button fx:id="restartButton" disable="true" layoutX="753.0" layoutY="230.0" mnemonicParsing="false" onMouseClicked="#onClickRestartButton" text="restarting" />
+      <Button fx:id="restartButton" disable="true" layoutX="753.0" layoutY="230.0" mnemonicParsing="false" onAction="#onClickRestartButton" onMouseClicked="#onMouseClickedCancelBtn" text="restarting" />
    </children>
 </AnchorPane>

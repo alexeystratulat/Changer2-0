@@ -19,6 +19,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.InputEvent;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
@@ -247,30 +248,32 @@ public class Controller1 {
 	}
 
 	@FXML
-	private void onClickRestartButton() {
+	private void onClickRestartButton() throws IOException {
 
 		System.out.println("onClickRestartButton");
 
-		Runnable task = new Runnable() {
-			public void run() {
-				Platform.runLater(new Runnable() {
-					@Override
-					public void run() {
-						//
-						if (checkBox0.isSelected()) {
-							System.out.println("selected");
-							RemoteFiles servToReboot0 = new RemoteFiles(serversList.get(0));
-							servToReboot0.restartingServer();
-						}
-
-					}
-				});
-
-			}
-		};
-		Thread backgroundThread = new Thread(task);
-		backgroundThread.setDaemon(true);
-		backgroundThread.start();
+		if (checkBox0.isSelected()) {
+			System.out.println("selected");
+			RemoteFiles servToReboot0 = new RemoteFiles(serversList.get(0));
+			servToReboot0.restartingServer();
+			//
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("RestartingWindow.fxml"));
+            AnchorPane root = (AnchorPane) loader.load();
+            Parent p = loader.getRoot();
+            Stage stage = new Stage();
+			stage.setScene(new Scene(p));
+			stage.setResizable(false);
+			stage.show();
+			
+			
+			
+			
+			
+			
+			
+			//
+			
+		}
 
 	}
 
@@ -297,5 +300,8 @@ public class Controller1 {
 		}
 
 	}
+	
+		
+	
 
 }
