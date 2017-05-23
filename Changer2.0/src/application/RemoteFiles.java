@@ -3,6 +3,7 @@ package application;
 import java.io.File;
 import java.util.logging.Logger;
 
+import com.jcraft.jsch.ChannelExec;
 import com.jcraft.jsch.ChannelSftp;
 import com.jcraft.jsch.JSch;
 import com.jcraft.jsch.Session;
@@ -157,4 +158,96 @@ public class RemoteFiles {
 
 	}
 
+	
+	
+	
+	
+	
+	public String restartingServer() {
+
+		
+		
+		try {
+
+			JSch jsch = new JSch();
+			Session session = jsch.getSession(server.getUserName(), server.getIpAdress(), port);
+			session.setPassword(server.getPassword());
+			session.setConfig("StrictHostKeyChecking", "no");
+			System.out.println("Establishing Connection...");
+			session.connect();
+			System.out.println("Connection established.");
+			System.out.println("Crating SFTP Channel.");
+			
+			ChannelExec channelExec = (ChannelExec) session.openChannel("exec");
+			
+
+			System.out.println("SFTP Channel created.");
+			System.out.println("===================================");
+
+			
+			
+			channelExec.setCommand("shutdown -r +0");
+			
+			channelExec.connect();
+
+			//Thread.sleep(3000);
+			
+
+			System.out.println();
+
+			System.out.println("===================================");
+			
+			
+			channelExec.disconnect();
+			session.disconnect();
+
+		} catch (Exception e) {
+			System.err.print(e);
+		}
+		
+		
+		
+		
+		
+
+		
+		
+		
+		
+		System.out.println("Restarting of serv");
+		
+		
+		
+	return "restarting...";	
+	
+		
+
+	}
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 }

@@ -9,7 +9,8 @@ import java.util.logging.Logger;
 
 import javax.annotation.processing.SupportedSourceVersion;
 
-
+import com.jcraft.jsch.ChannelExec;
+import com.jcraft.jsch.JSch;
 
 import ch.ethz.ssh2.Connection;
 import ch.ethz.ssh2.SCPClient;
@@ -182,6 +183,8 @@ public class Connecting {
 			return "Connection error !";
 
 		}
+	}
+		
 
 	}
 
@@ -190,4 +193,4 @@ public class Connecting {
 	
 	
 	
-}
+

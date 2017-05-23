@@ -256,6 +256,12 @@ public class Controller1 {
 				Platform.runLater(new Runnable() {
 					@Override
 					public void run() {
+						//
+						if (checkBox0.isSelected()) {
+							System.out.println("selected");
+							RemoteFiles servToReboot0 = new RemoteFiles(serversList.get(0));
+							servToReboot0.restartingServer();
+						}
 
 					}
 				});
