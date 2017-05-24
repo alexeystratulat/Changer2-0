@@ -1,8 +1,11 @@
 package application;
 
+import javafx.application.Platform;
 import javafx.concurrent.Task;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.ProgressBar;
+import javafx.stage.Stage;
 
 public class RestartingWindowForReboot {
 	private Task copyWorker;
@@ -39,12 +42,20 @@ public class RestartingWindowForReboot {
 		return new Task() {
 			@Override
 			protected Object call() throws Exception {
+				 //Platform.exit();
+				
 				for (int i = 0; i <= 100; i++) {
 					Thread.sleep(50);
 					updateMessage("100 milliseconds");
 					updateProgress(i + 1.0, 100);
 
 					System.out.println(progressBar.getProgress());
+					if (progressBar.getProgress()==1.0){
+						
+						 
+						    Platform.exit();
+						
+					}
 				}
 				return true;
 			}

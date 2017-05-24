@@ -105,12 +105,12 @@ public class Controller1 {
 						if (toggleButtonTAM.getText().contains("running")) {
 
 							toggleButtonTAM.setSelected(true);
-							restartButton.setDisable(false);
+						//	restartButton.setDisable(false);
 
 						} else {
 							toggleButtonTAM.setSelected(false);
 							toggleButtonTAM.getText().contains("stopped");
-							restartButton.setDisable(false);
+						//	restartButton.setDisable(false);
 						}
 						//
 					}
@@ -175,13 +175,29 @@ public class Controller1 {
 		if (checkBoxAll.isSelected()) {
 			System.out.println("SELECTED");
 			checkBox0.setSelected(true);
+			restartButton.setDisable(false);
 		} else {
 			System.out.println("NOT SELECTED");
 			checkBox0.setSelected(false);
+			restartButton.setDisable(true);
 		}
 
 	}
 
+	@FXML
+	private void onClickCheckbox0() {
+		
+		if (checkBox0.isSelected()) {
+			System.out.println("SELECTED");
+			checkBoxAll.setSelected(true);
+			restartButton.setDisable(false);
+		} else {
+			System.out.println("NOT SELECTED");
+			checkBoxAll.setSelected(false);
+			restartButton.setDisable(true);
+		}
+		
+	}
 	@FXML
 	private void onClickChangePrompts0() {
 
@@ -208,18 +224,6 @@ public class Controller1 {
 
 	}
 
-	@FXML
-	private void onClickCheckbox0() {
-
-		if (checkBox0.isSelected()) {
-			System.out.println("SELECTED");
-			checkBoxAll.setSelected(true);
-		} else {
-			System.out.println("NOT SELECTED");
-			checkBoxAll.setSelected(false);
-		}
-
-	}
 
 	@FXML
 	private void onClickToggleButtonTamStatus0() {
@@ -256,6 +260,7 @@ public class Controller1 {
 			System.out.println("selected");
 			RemoteFiles servToReboot0 = new RemoteFiles(serversList.get(0));
 			servToReboot0.restartingServer();
+			//
 			//
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("RestartingWindow.fxml"));
             AnchorPane root = (AnchorPane) loader.load();
