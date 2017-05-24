@@ -8,6 +8,19 @@ public class RestartingWindowForReboot {
 	private Task copyWorker;
 	@FXML
 	private ProgressBar progressBar;
+	//
+	
+	String nameOfEnv;
+	
+	
+	
+	
+	public void setNameOfEnv(String nameOfEnv) {
+		this.nameOfEnv =nameOfEnv;
+		System.out.println("nameOfEnv was sent to restart window "+nameOfEnv);
+		// TODO Auto-generated method stub
+		
+	}
 
 	@FXML
 	private void initialize() {
@@ -37,5 +50,6 @@ public class RestartingWindowForReboot {
 			}
 		};
 	}
+
 
 }

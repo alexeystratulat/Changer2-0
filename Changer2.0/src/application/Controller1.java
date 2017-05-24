@@ -259,6 +259,8 @@ public class Controller1 {
 			//
 			FXMLLoader loader = new FXMLLoader(getClass().getResource("RestartingWindow.fxml"));
             AnchorPane root = (AnchorPane) loader.load();
+            RestartingWindowForReboot d1 = loader.getController();
+            d1.setNameOfEnv(nameOfEnv);
             Parent p = loader.getRoot();
             Stage stage = new Stage();
 			stage.setScene(new Scene(p));
