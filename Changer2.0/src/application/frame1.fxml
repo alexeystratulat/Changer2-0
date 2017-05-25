@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="274.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller1">
    <children>
       <Text fx:id="top" layoutX="373.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of Environment">
          <font>
@@ -49,11 +49,6 @@
                   <Font name="Linux Biolinum G Regular" size="12.0" />
                </font>
             </ToggleButton>
-            <Button layoutX="653.0" layoutY="23.0" mnemonicParsing="false" onMouseClicked="#onClick" prefHeight="23.0" prefWidth="50.0" text="Refresh">
-               <font>
-                  <Font size="10.0" />
-               </font>
-            </Button>
          </children>
       </Pane>
       <Button alignment="CENTER" layoutX="21.0" layoutY="10.0" mnemonicParsing="false" onAction="#onClickBackButton" onMouseClicked="#onMouseClickedCancelBtn" prefHeight="32.0" prefWidth="32.0" style="-fx-background-radius: 20; -fx-border-radius: 20; -fx-border-color: #73d0ff;" text="&lt;">
@@ -89,7 +84,7 @@
                   <Font size="11.0" />
                </font>
             </Label>
-            <Label layoutX="484.0" layoutY="5.0" text="TAM" textFill="#014314">
+            <Label layoutX="506.0" layoutY="5.0" text="TAM" textFill="#014314">
                <font>
                   <Font size="11.0" />
                </font></Label>
@@ -100,6 +95,6 @@
          </children>
       </Pane>
       <Separator layoutX="14.0" layoutY="149.0" prefHeight="4.0" prefWidth="828.0" />
-      <Button fx:id="restartButton" disable="true" layoutX="753.0" layoutY="230.0" mnemonicParsing="false" onAction="#onClickRestartButton" onMouseClicked="#onMouseClickedCancelBtn" text="restarting" />
+      <Button fx:id="restartButton" disable="true" layoutX="757.0" layoutY="254.0" mnemonicParsing="false" onAction="#onClickRestartButton" onMouseClicked="#onMouseClickedCancelBtn" text="restarting" />
    </children>
 </AnchorPane>

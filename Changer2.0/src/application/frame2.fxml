@@ -19,7 +19,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="303.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller1">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="858.0" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="application.Controller2">
    <children>
       <Text fx:id="top" layoutX="373.0" layoutY="31.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Name of Environment">
          <font>
@@ -95,6 +95,33 @@
          </children>
       </Pane>
       <Separator layoutX="14.0" layoutY="149.0" prefHeight="4.0" prefWidth="828.0" />
-      <Button fx:id="restartButton" disable="true" layoutX="757.0" layoutY="254.0" mnemonicParsing="false" onAction="#onClickRestartButton" onMouseClicked="#onMouseClickedCancelBtn" text="restarting" />
+      <Button fx:id="restartButton" disable="true" layoutX="757.0" layoutY="261.0" mnemonicParsing="false" onAction="#onClickRestartButton" onMouseClicked="#onMouseClickedCancelBtn" text="restarting" />
+      <Separator layoutX="15.0" layoutY="222.0" prefHeight="4.0" prefWidth="828.0" />
+      <Pane layoutX="14.0" layoutY="152.0" prefHeight="70.0" prefWidth="828.0" style="-fx-background-radius: 10;">
+         <children>
+            <Label fx:id="labelIpAdress1" layoutX="141.0" layoutY="25.0" prefHeight="17.0" prefWidth="91.0" text="192.192.192.192" />
+            <CheckBox fx:id="checkBox1" layoutX="12.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#onClickCheckbox0" prefHeight="37.0" prefWidth="21.0">
+               <font>
+                  <Font size="19.0" />
+               </font>
+            </CheckBox>
+            <Label fx:id="labelConnectionStatus1" layoutX="248.0" layoutY="24.0" prefHeight="17.0" prefWidth="108.0" text="connection status" />
+            <Label fx:id="labelNameOfServer1" layoutX="58.0" layoutY="25.0" prefHeight="17.0" prefWidth="78.0" text="Server name" />
+            <Button layoutX="731.0" layoutY="22.0" mnemonicParsing="false" onAction="#toShowConfigWindow" prefHeight="17.0" prefWidth="78.0" text="View config">
+               <font>
+                  <Font size="10.0" />
+               </font>
+            </Button>
+            <Label fx:id="labelPromptStatus1" disable="true" layoutX="362.0" layoutY="25.0" onMouseClicked="#onClickChangePrompts0" prefHeight="17.0" prefWidth="89.0" text="Prompts Status" />
+            <ToggleButton fx:id="toggleButtonTAM1" layoutX="481.0" layoutY="22.0" mnemonicParsing="false" onAction="#onClickToggleButtonTamStatus0" prefHeight="25.0" prefWidth="108.0" text="unknown">
+               <cursor>
+                  <Cursor fx:constant="DEFAULT" />
+               </cursor>
+               <font>
+                  <Font name="Linux Biolinum G Regular" size="12.0" />
+               </font>
+            </ToggleButton>
+         </children>
+      </Pane>
    </children>
 </AnchorPane>

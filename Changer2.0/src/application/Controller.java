@@ -46,14 +46,21 @@ public class Controller {
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			if (parseForIp.parserIniForIP().size() == 1) {
 				fxmlLoader.setLocation(getClass().getResource("frame1.fxml"));
-			} else {
+				fxmlLoader.load();
+				Controller1 d1 = fxmlLoader.getController();
+				d1.setNameOfEnv(listForChoiceBox.getValue());
+				
+			} if (parseForIp.parserIniForIP().size() == 2) {
 				System.out.println("start frame for a few");
-				fxmlLoader.setLocation(getClass().getResource("frameTest.fxml"));
+				fxmlLoader.setLocation(getClass().getResource("frame2.fxml"));
+				fxmlLoader.load();
+				
+				Controller2 d1 = fxmlLoader.getController();
+				d1.setNameOfEnv(listForChoiceBox.getValue());
 			}
-			fxmlLoader.load();
+			
 
-			Controller1 d1 = fxmlLoader.getController();
-			d1.setNameOfEnv(listForChoiceBox.getValue());
+			
 			Parent p = fxmlLoader.getRoot();
 			Stage stage = new Stage();
 			stage.setScene(new Scene(p));
