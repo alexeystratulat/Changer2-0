@@ -74,7 +74,7 @@ public class Connecting {
 	public String statusTam() {
 
 		try {
-
+System.out.println("Status TAM for server "+ server.getIpAdress());
 			conn.connect();
 
 			boolean isAuthenticated = conn.authenticateWithPassword(server.getUserName(), server.getPassword());

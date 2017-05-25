@@ -29,7 +29,7 @@
       <Pane layoutX="14.0" layoutY="79.0" prefHeight="70.0" prefWidth="828.0" style="-fx-background-radius: 10;">
          <children>
             <Label fx:id="labelIpAdress0" layoutX="141.0" layoutY="25.0" prefHeight="17.0" prefWidth="91.0" text="192.192.192.192" />
-            <CheckBox fx:id="checkBox0" layoutX="12.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#onClickCheckbox0" prefHeight="37.0" prefWidth="21.0">
+            <CheckBox fx:id="checkBox0" layoutX="12.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#onClickCheckboxChecker" prefHeight="37.0" prefWidth="21.0">
                <font>
                   <Font size="19.0" />
                </font>
@@ -66,7 +66,7 @@
       <Separator layoutX="14.0" layoutY="76.0" prefHeight="4.0" prefWidth="828.0" />
       <Pane layoutX="13.0" layoutY="51.0" prefHeight="25.0" prefWidth="828.0">
          <children>
-            <CheckBox fx:id="checkBoxAll" layoutX="16.0" layoutY="5.0" mnemonicParsing="false" onMouseClicked="#onClickCheckboxAll">
+            <CheckBox fx:id="checkBoxAll" layoutX="16.0" layoutY="5.0" mnemonicParsing="false" onAction="#onClickCheckboxAll" onMouseClicked="#onClickCheckboxAll">
                <font>
                   <Font size="11.0" />
                </font>
@@ -100,7 +100,7 @@
       <Pane layoutX="14.0" layoutY="152.0" prefHeight="70.0" prefWidth="828.0" style="-fx-background-radius: 10;">
          <children>
             <Label fx:id="labelIpAdress1" layoutX="141.0" layoutY="25.0" prefHeight="17.0" prefWidth="91.0" text="192.192.192.192" />
-            <CheckBox fx:id="checkBox1" layoutX="12.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#onClickCheckbox0" prefHeight="37.0" prefWidth="21.0">
+            <CheckBox fx:id="checkBox1" layoutX="12.0" layoutY="15.0" mnemonicParsing="false" onMouseClicked="#onClickCheckboxChecker" prefHeight="37.0" prefWidth="21.0">
                <font>
                   <Font size="19.0" />
                </font>

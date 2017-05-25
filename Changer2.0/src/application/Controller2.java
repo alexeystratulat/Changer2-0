@@ -1,11 +1,8 @@
 package application;
 
-
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
-
-
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -61,7 +58,7 @@ public class Controller2 {
 	//
 	@FXML
 	private CheckBox checkBoxAll;
-	
+
 	@FXML
 	private Button restartButton;
 
@@ -81,7 +78,6 @@ public class Controller2 {
 		parseForIp = new Parser(nameOfEnv);
 		serversList = parseForIp.parserIniForIP();
 		//
-		
 
 		initializationStatusesOfServ0();
 		initializationStatusesOfServ1();
@@ -89,7 +85,7 @@ public class Controller2 {
 	}
 
 	public void initializationStatusesOfServ0() {
-		
+
 		creatingPath = new WorkWithFile(serversList.get(0).getServerName().toString());
 		creatingPath.creatingPathSourseFile(); //
 
@@ -146,8 +142,9 @@ public class Controller2 {
 		backgroundThread.start();
 
 	}
+
 	public void initializationStatusesOfServ1() {
-		
+
 		creatingPath = new WorkWithFile(serversList.get(1).getServerName().toString());
 		creatingPath.creatingPathSourseFile(); //
 
@@ -204,6 +201,7 @@ public class Controller2 {
 		backgroundThread.start();
 
 	}
+
 	public Controller2() {
 
 		// logger.info(nameOfEnv);
@@ -214,18 +212,35 @@ public class Controller2 {
 	@FXML
 	private void onClickCheckboxAll() {
 
+		/*
+		 * if (checkBoxAll.isSelected()) { System.out.println("SELECTED");
+		 * checkBox0.setSelected(true); restartButton.setDisable(false); } else
+		 * { System.out.println("NOT SELECTED"); checkBox0.setSelected(false);
+		 * restartButton.setDisable(true); }
+		 */
+
 		if (checkBoxAll.isSelected()) {
 			System.out.println("SELECTED");
 			checkBox0.setSelected(true);
-			restartButton.setDisable(false);
+			checkBox1.setSelected(true);
 		} else {
-			System.out.println("NOT SELECTED");
 			checkBox0.setSelected(false);
-			restartButton.setDisable(true);
+			checkBox1.setSelected(false);
 		}
 
-	}		
-	
+	}
+
+	@FXML
+	private void onClickCheckboxChecker() {
+
+		if (checkBox0.isSelected() && checkBox1.isSelected()) {
+			checkBoxAll.setSelected(true);
+		} else {
+			checkBoxAll.setSelected(false);
+		}
+
+	}
+
 	//
 	//
 	//
