@@ -1,12 +1,11 @@
 package application;
 
-import java.awt.Checkbox;
-import java.awt.Color;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.logging.Logger;
 
-import javax.rmi.CORBA.Util;
+
 
 import javafx.application.Platform;
 import javafx.fxml.FXML;
@@ -19,7 +18,7 @@ import javafx.scene.control.CheckBox;
 import javafx.scene.control.Label;
 import javafx.scene.control.ToggleButton;
 import javafx.scene.input.InputEvent;
-import javafx.scene.layout.AnchorPane;
+
 import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
