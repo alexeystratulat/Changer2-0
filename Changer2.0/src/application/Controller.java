@@ -38,8 +38,8 @@ public class Controller {
 	@FXML
 	public void nextButtonClicked() {
 		Parser parseForIp = new Parser(listForChoiceBox.getValue());
-		logger.info("\n=======\nNEXT> button is typed \n" + "ENV: " + listForChoiceBox.getValue() + "\nsize of choised env:  "
-				+ Integer.toString(parseForIp.parserIniForIP().size())+"\n=======");
+		logger.info("\n=======\nNEXT> button is typed \n" + "ENV: " + listForChoiceBox.getValue()
+				+ "\nsize of choised env:  " + Integer.toString(parseForIp.parserIniForIP().size()) + "\n=======");
 
 		try {
 
@@ -54,7 +54,7 @@ public class Controller {
 
 			Controller1 d1 = fxmlLoader.getController();
 			d1.setNameOfEnv(listForChoiceBox.getValue());
-					Parent p = fxmlLoader.getRoot();
+			Parent p = fxmlLoader.getRoot();
 			Stage stage = new Stage();
 			stage.setScene(new Scene(p));
 			stage.setResizable(false);

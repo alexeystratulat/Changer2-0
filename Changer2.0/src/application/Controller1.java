@@ -105,12 +105,12 @@ public class Controller1 {
 						if (toggleButtonTAM.getText().contains("running")) {
 
 							toggleButtonTAM.setSelected(true);
-						//	restartButton.setDisable(false);
+							// restartButton.setDisable(false);
 
 						} else {
 							toggleButtonTAM.setSelected(false);
 							toggleButtonTAM.getText().contains("stopped");
-						//	restartButton.setDisable(false);
+							// restartButton.setDisable(false);
 						}
 						//
 					}
@@ -118,6 +118,7 @@ public class Controller1 {
 
 			}
 		};
+
 		Thread backgroundThread = new Thread(task);
 		backgroundThread.setDaemon(true);
 		backgroundThread.start();
@@ -129,44 +130,6 @@ public class Controller1 {
 		// logger.info(nameOfEnv);
 		logger.info("\n\n===================    Starting of main window    =====================\n\n ");
 
-	}
-
-	@FXML
-	private void onClick() {
-		// System.out.println(serversList.toString());
-
-		initializationStatusesOfServ0();
-	}
-
-	@FXML
-	private void onClickBackButton() {
-
-		try {
-
-			FXMLLoader fxmlLoader = new FXMLLoader();
-
-			fxmlLoader.setLocation(getClass().getResource("frame.fxml"));
-
-			fxmlLoader.load();
-
-			Parent p = fxmlLoader.getRoot();
-			Stage stage = new Stage();
-			stage.setScene(new Scene(p));
-			stage.setResizable(false);
-			stage.show();
-
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-	}
-
-	@FXML
-	public void onMouseClickedCancelBtn(InputEvent e) {
-		final Node source = (Node) e.getSource();
-		final Stage stage = (Stage) source.getScene().getWindow();
-		stage.close();
-		//
 	}
 
 	@FXML
@@ -182,11 +145,23 @@ public class Controller1 {
 			restartButton.setDisable(true);
 		}
 
+	}		
+	
+	//
+	//
+	//
+	//
+	//
+	@FXML
+	private void onClick() {
+		// System.out.println(serversList.toString());
+
+		initializationStatusesOfServ0();
 	}
 
 	@FXML
 	private void onClickCheckbox0() {
-		
+
 		if (checkBox0.isSelected()) {
 			System.out.println("SELECTED");
 			checkBoxAll.setSelected(true);
@@ -196,8 +171,9 @@ public class Controller1 {
 			checkBoxAll.setSelected(false);
 			restartButton.setDisable(true);
 		}
-		
+
 	}
+
 	@FXML
 	private void onClickChangePrompts0() {
 
@@ -223,7 +199,6 @@ public class Controller1 {
 		backgroundThread.start();
 
 	}
-
 
 	@FXML
 	private void onClickToggleButtonTamStatus0() {
@@ -252,43 +227,8 @@ public class Controller1 {
 	}
 
 	@FXML
-	private void onClickRestartButton() throws IOException {
-
-		System.out.println("onClickRestartButton");
-
-		if (checkBox0.isSelected()) {
-			System.out.println("selected");
-			RemoteFiles servToReboot0 = new RemoteFiles(serversList.get(0));
-			servToReboot0.restartingServer();
-			//
-			//
-			FXMLLoader loader = new FXMLLoader(getClass().getResource("RestartingWindow.fxml"));
-            AnchorPane root = (AnchorPane) loader.load();
-            RestartingWindowForReboot d1 = loader.getController();
-            d1.setNameOfEnv(nameOfEnv);
-            Parent p = loader.getRoot();
-            Stage stage = new Stage();
-			stage.setScene(new Scene(p));
-			stage.setResizable(false);
-			stage.show();
-			
-			
-			
-			
-			
-			
-			
-			//
-			
-		}
-
-	}
-
-	@FXML
 	private void toShowConfigWindow() {
-
 		try {
-
 			FXMLLoader fxmlLoader = new FXMLLoader();
 			fxmlLoader.setLocation(getClass().getResource("frameConfig.fxml"));
 			System.out.println("start frame for a few");
@@ -301,14 +241,63 @@ public class Controller1 {
 			stage.setScene(new Scene(p));
 			stage.setResizable(false);
 			stage.show();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
+	}
+
+	//
+	//
+	//
+	//
+	@FXML
+	private void onClickRestartButton() throws IOException {
+
+		System.out.println("onClickRestartButton");
+
+		if (checkBox0.isSelected()) {
+			System.out.println("selected");
+			RemoteFiles servToReboot0 = new RemoteFiles(serversList.get(0));
+			servToReboot0.restartingServer();
+			//
+			//
+			FXMLLoader loader = new FXMLLoader(getClass().getResource("RestartingWindow.fxml"));
+			loader.load();
+			RestartingWindowForReboot d1 = loader.getController();
+			d1.setNameOfEnv(nameOfEnv);
+			Parent p = loader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(p));
+			stage.setResizable(false);
+			stage.show();
+		}
+	}
+
+	@FXML
+	private void onClickBackButton() {
+
+		try {
+			FXMLLoader fxmlLoader = new FXMLLoader();
+			fxmlLoader.setLocation(getClass().getResource("frame.fxml"));
+			fxmlLoader.load();
+			Parent p = fxmlLoader.getRoot();
+			Stage stage = new Stage();
+			stage.setScene(new Scene(p));
+			stage.setResizable(false);
+			stage.show();
 
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 
 	}
-	
-		
-	
 
+	@FXML
+	public void onMouseClickedCancelBtn(InputEvent e) {
+		final Node source = (Node) e.getSource();
+		final Stage stage = (Stage) source.getScene().getWindow();
+		stage.close();
+		//
+	}
 }
